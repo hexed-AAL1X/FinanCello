@@ -1,61 +1,201 @@
-# FinancelloLanding
+# FinanCello (Frontend)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+<a id="readme-top"></a>
 
-## Development server
+<img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" width="100%">
 
-To start a local development server, run:
+<p align="center">
+  <img alt="GitHub Repo contributors" src="https://img.shields.io/github/contributors/hexed-AAL1X/FinanCello?style=for-the-badge">&nbsp;
+  <img alt="GitHub Repo forks" src="https://img.shields.io/github/forks/hexed-AAL1X/FinanCello?style=for-the-badge">&nbsp;
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hexed-AAL1X/FinanCello?style=for-the-badge">&nbsp;
+  <img alt="GitHub Repo issues" src="https://img.shields.io/github/issues/hexed-AAL1X/FinanCello?style=for-the-badge">&nbsp;
+</p>
+
+<br>
+
+<div align="center">
+  <img src="src/assets/img/financello.png" alt="FinanCello" width="120" />
+  <h3 align="center">FinanCello Frontend</h3>
+  <p align="center">
+    Frontend web (Angular) para gestión de finanzas personales y empresariales.
+    <br>
+    <a href="https://github.com/hexed-AAL1X/FinanCello"><strong>Explorar repositorio »</strong></a>
+    <br><br>
+    <a href="https://github.com/hexed-AAL1X/FinanCello">Ver código</a>
+    ·
+    <a href="https://github.com/hexed-AAL1X/FinanCello/issues/new?labels=bug">Reportar bug</a>
+    ·
+    <a href="https://github.com/hexed-AAL1X/FinanCello/issues/new?labels=enhancement">Pedir feature</a>
+  </p>
+</div>
+
+---
+
+<details>
+  <summary>Tabla de contenidos</summary>
+  <ol>
+    <li><a href="#about-the-project">About the project</a></li>
+    <li><a href="#built-with">Built with</a></li>
+    <li><a href="#important-notices">Important notices</a></li>
+    <li>
+      <a href="#getting-started">Getting started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#available-scripts">Available scripts</a></li>
+      </ul>
+    </li>
+    <li><a href="#environments">Environments</a></li>
+    <li><a href="#deployment">Deployment</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+---
+
+<a id="about-the-project"></a>
+
+## About the project
+
+FinanCello es una aplicación web enfocada en ayudarte a administrar tus finanzas.
+
+Incluye:
+
+- Landing page con modal de autenticación.
+- Dashboard y módulos para categorías, movimientos, metas de ahorro y más.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a id="built-with"></a>
+
+## Built with
+
+- ![Angular](https://img.shields.io/badge/Angular-20.0.4-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+- ![RxJS](https://img.shields.io/badge/RxJS-7.8-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
+- ![Vite](https://img.shields.io/badge/Vite-dev_server-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+- ![GSAP](https://img.shields.io/badge/GSAP-animations-88CE02?style=for-the-badge&logo=greensock&logoColor=0B0B0B)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a id="important-notices"></a>
+
+## Important notices
+
+> [!NOTE]
+> No necesitas instalar `ng` globalmente. Este proyecto ya incluye Angular CLI en `devDependencies`.
+>
+> Usa `npm run start` para levantar el servidor local.
+
+> [!IMPORTANT]
+> Este repo es el **frontend**. Para autenticarte y usar el dashboard necesitas un backend corriendo y configurar `apiUrl` en los environments.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a id="getting-started"></a>
+
+## Getting started
+
+<a id="prerequisites"></a>
+
+### Prerequisites
+
+- Node.js (recomendado: LTS)
+- npm
+
+<a id="installation"></a>
+
+### Installation
+
+1) Clonar el repositorio
 
 ```bash
-ng serve
-# or 
+git clone https://github.com/hexed-AAL1X/FinanCello.git
+cd FinanCello
+```
+
+2) Instalar dependencias
+
+```bash
+npm install
+```
+
+3) Ejecutar en modo desarrollo
+
+```bash
 npm run start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4) Abrir en el navegador
 
-## Code scaffolding
+- `http://localhost:4200/`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+<a id="available-scripts"></a>
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Available scripts
 
 ```bash
-ng generate --help
+npm run start        # ng serve
+npm run build        # build producción
+npm run build:netlify
+npm run test
 ```
 
-## Building
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-To build the project run:
+<a id="environments"></a>
+
+## Environments
+
+Los environments están en:
+
+- `src/app/environments/environment.ts` (dev)
+- `src/app/environments/environment.prod.ts` (prod)
+
+En producción se usa `environment.prod.ts` mediante `fileReplacements` en `angular.json`.
+
+Variables relevantes:
+
+- `apiUrl`: URL del backend (`/api/v1`)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a id="deployment"></a>
+
+## Deployment
+
+### Netlify
+
+Build command:
 
 ```bash
-ng build
+npm run build:netlify
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Publish directory:
 
-## Running unit tests
+- `dist/financello-landing`
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```bash
-ng test
-```
+<a id="contributing"></a>
 
-## Running end-to-end tests
+## Contributing
 
-For end-to-end (e2e) testing, run:
+Contribuciones bienvenidas.
 
-```bash
-ng e2e
-```
+1) Fork del proyecto
+2) Crear una rama (`git checkout -b feature/nueva-feature`)
+3) Commit (`git commit -m "Add: ..."`)
+4) Push (`git push origin feature/nueva-feature`)
+5) Pull Request
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Additional Resources
+<a id="contact"></a>
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Contact
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
