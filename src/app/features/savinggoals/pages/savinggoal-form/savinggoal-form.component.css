@@ -1,0 +1,312 @@
+.form-backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.form-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 50px;
+  width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 28px;
+  color: #222;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+  color: #0ea49b;
+}
+
+.tab-btn.active {
+  color: #0ea49b;
+  border-bottom-color: #0ea49b;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0ea49b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #fcc;
+  font-family: "Poppins-Regular", sans-serif;
+}
+
+/* Tab content */
+.tab-content {
+  min-height: 300px;
+}
+
+.tab-content h3 {
+  margin-bottom: 20px;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 20px;
+  color: #222;
+}
+
+/* Goals list */
+.goals-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.goals-list h4 {
+  margin-bottom: 15px;
+  font-family: "Poppins-Medium", sans-serif;
+  color: #333;
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.goal-item:hover {
+  background-color: #e9ecef;
+  transform: translateY(-1px);
+}
+
+.goal-info h5 {
+  margin: 0 0 5px 0;
+  font-family: "PalanquinDark-Regular", sans-serif;
+  color: #222;
+}
+
+.goal-info p {
+  margin: 2px 0;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.no-goals {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-family: "Poppins-Regular", sans-serif;
+}
+
+/* Selected goal info */
+.selected-goal-info {
+  background-color: #e8f5e8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6c3;
+}
+
+.selected-goal-info h4 {
+  margin: 0;
+  color: #2d5a2d;
+  font-family: "Poppins-Medium", sans-serif;
+}
+
+/* Warning text */
+.warning-text {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ffeaa7;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn-edit {
+  background-color: #0ea49b;
+  color: white;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.btn-delete {
+  background-color: #f15b64;
+  color: white;
+  font-size: 12px;
+  padding: 6px 12px;
+}
+
+.form-container h2 {
+  margin-bottom: 25px;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 28px;
+  color: #222;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input {
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0ea49b;
+  box-shadow: 0 0 5px #0ea49b88;
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "Poppins-Medium", sans-serif;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #0ea49b;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #bababa;
+  color: #222;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

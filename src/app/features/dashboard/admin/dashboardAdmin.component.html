@@ -1,0 +1,159 @@
+<div class="content">
+    <div class="weolcome-buttons">
+      <div class="user-list">User List</div>
+    </div>
+    
+    <!-- Loading and Error States -->
+    <div *ngIf="isLoading" class="loading-state">
+      <div class="loading-spinner"></div>
+      <div>Loading users...</div>
+    </div>
+    
+    <div *ngIf="errorMessage" class="error-state">
+      {{ errorMessage }}
+    </div>
+    
+    <div class="all-tickets" *ngIf="!isLoading && !errorMessage">
+      <div class="cards-default">
+        <div class="sheet"></div>
+      </div>
+      <div class="all-users">All Users</div>
+      
+      <!-- Search and Filter Controls -->
+      <div class="controls-section">
+        <div class="search-control">
+          <input 
+            type="text" 
+            placeholder="Search users..."
+            [(ngModel)]="searchTerm"
+            (input)="onSearchChange()"
+            class="search-input"
+          />
+        </div>
+        
+        <div class="filter-control">
+          <select 
+            [(ngModel)]="roleFilter"
+            (change)="onRoleFilterChange()"
+            class="role-select"
+          >
+            <option value="">All Roles</option>
+            <option *ngFor="let role of availableRoles" [value]="role">
+              {{ role }}
+            </option>
+          </select>
+        </div>
+        
+        <button 
+          (click)="clearFilters()"
+          class="clear-filters-btn"
+          *ngIf="searchTerm || roleFilter"
+        >
+          Clear Filters
+        </button>
+      </div>
+      
+      <div class="sort2" (click)="onSort('firstName')">
+        Sort
+        <span *ngIf="sortField === 'firstName'">
+          {{ sortDirection === 'asc' ? '↑' : '↓' }}
+        </span>
+      </div>
+      <img class="icon-sort" src="icon-sort0.svg" />
+      <div class="filter2">Filter</div>
+      <img class="icon-filter" src="icon-filter0.svg" />
+      
+      <!-- Table Header -->
+      <div class="table-top">
+        <div class="users-details">Users Details</div>
+        <div class="customer-name" (click)="onSort('firstName')">
+          Customer name
+          <span *ngIf="sortField === 'firstName'">
+            {{ sortDirection === 'asc' ? '↑' : '↓' }}
+          </span>
+        </div>
+        <div class="role" (click)="onSort('role')">
+          Role
+          <span *ngIf="sortField === 'role'">
+            {{ sortDirection === 'asc' ? '↑' : '↓' }}
+          </span>
+        </div>
+        <div class="date">Date</div>
+        <img class="divider-line-horizontal" src="divider-line-horizontal0.svg" />
+      </div>
+      
+      <!-- Users Table -->
+      <div class="frame-239184">
+        <div 
+          *ngFor="let user of getPaginatedUsers(); let i = index"
+          class="table-ticket-priority-high"
+          [ngClass]="getUserRoleClass(user.role)"
+        >
+          <img 
+            class="icon-more-vertical" 
+            src="icon-more-vertical0.svg"
+            (click)="onUserAction(user, 'menu')"
+          />
+          
+          <div class="group-239186">
+            <div class="sheet2" [ngClass]="getUserRoleClass(user.role)"></div>
+            <div class="title">{{ user.role.toUpperCase() }}</div>
+          </div>
+          
+          <div class="time-label">{{ user.id }}</div>
+          <div class="date-label">{{ user.email }}</div>
+          <div class="date-customer">User ID: {{ user.id }}</div>
+          <div class="customer-name2">{{ user.email }}</div>
+          <div class="ticket-information">Role: {{ user.role }}</div>
+          <div class="ticket-name">{{ getUserFullName(user) }}</div>
+          
+          <!-- User Avatar with Initials -->
+          <div class="avatar-man-5">
+            {{ getUserInitials(user) }}
+          </div>
+          
+          <img
+            class="divider-line-horizontal2"
+            src="divider-line-horizontal1.svg"
+          />
+          <img
+            class="divider-line-horizontal3"
+            src="divider-line-horizontal2.svg"
+          />
+        </div>
+      </div>
+      
+      <!-- Pagination -->
+      <div class="rows-per-page">
+        <div class="rows-per-page2">Rows per page:</div>
+        <select 
+          [(ngModel)]="itemsPerPage"
+          (change)="onItemsPerPageChange(itemsPerPage)"
+          class="items-per-page-select"
+        >
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="12">12</option>
+          <option value="16">16</option>
+        </select>
+        <img class="icon-dropdown" src="icon-dropdown0.svg" />
+      </div>
+      
+      <div class="pagination">
+        <div class="_1-8-of-1240">{{ getDisplayRange() }}</div>
+        <img 
+          class="icon-arrow-left" 
+          src="icon-arrow-left0.svg"
+          (click)="onPageChange(currentPage - 1)"
+          [class.disabled]="currentPage <= 1"
+        />
+        <img 
+          class="icon-arrow-right" 
+          src="icon-arrow-right0.svg"
+          (click)="onPageChange(currentPage + 1)"
+          [class.disabled]="currentPage >= getTotalPages()"
+        />
+      </div>
+    </div>
+  </div>
+  

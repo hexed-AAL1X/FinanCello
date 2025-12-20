@@ -1,0 +1,5 @@
+# Netlify redirects file for Angular SPA
+# This ensures that all routes are handled by Angular's router
+
+# Redirect all routes to index.html for SPA functionality
+/*    /index.html   200

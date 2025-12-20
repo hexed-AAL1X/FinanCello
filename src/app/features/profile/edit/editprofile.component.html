@@ -1,0 +1,162 @@
+<div class="edit-profile-container">
+  <!-- Header -->
+  <div class="edit-header">
+    <div class="header-content">
+      <div class="header-left">
+        <button class="back-button" (click)="goBack()">
+          <img src="assets/icons/caret-down.png" alt="Volver" class="back-icon">
+          Volver
+        </button>
+        <h1 class="edit-title">Editar Perfil</h1>
+      </div>
+      <button 
+        type="button" 
+        class="header-save-button"
+        [disabled]="profileForm.invalid || isSubmitting"
+        (click)="onSave()"
+      >
+        <div *ngIf="!isSubmitting" class="save-content">
+          Guardar Cambios
+        </div>
+        <div *ngIf="isSubmitting" class="save-content">
+          <div class="save-spinner"></div>
+          Guardando...
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Guardando cambios...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="errorMessage" class="error-message">
+    <img src="assets/icons/error.png" alt="Error" class="error-icon">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    <img src="assets/icons/success.png" alt="Éxito" class="success-icon">
+    {{ successMessage }}
+  </div>
+
+  <!-- Edit Form -->
+  <div *ngIf="!isLoading" class="edit-content">
+    <form [formGroup]="profileForm" class="edit-form">
+      <!-- Profile Avatar Section -->
+      <div class="avatar-section">
+        <div class="avatar-container">
+          <div class="avatar-circle">
+            <span class="avatar-initials">{{ getInitials() }}</span>
+          </div>
+          <div class="avatar-overlay">
+            <img src="assets/icons/user-gear.png" alt="Editar" class="avatar-edit-icon">
+          </div>
+        </div>
+        <div class="avatar-info">
+          <h3 class="current-name">{{ userInfo?.firstName }} {{ userInfo?.lastName }}</h3>
+          <p class="current-email">{{ userInfo?.email }}</p>
+        </div>
+      </div>
+
+      <!-- Form Fields -->
+      <div class="form-sections">
+        <!-- Personal Information -->
+        <div class="form-section">
+          <h3 class="section-title">
+            <img src="assets/icons/user.svg" alt="Usuario" class="section-icon">
+            Información Personal
+          </h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName" class="form-label">Nombre</label>
+              <input 
+                type="text" 
+                id="firstName"
+                formControlName="firstName" 
+                class="form-input"
+                [class.error]="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched"
+                placeholder="Ingresa tu nombre"
+              />
+              <div *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched" class="error-text">
+                El nombre es requerido
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="lastName" class="form-label">Apellido</label>
+              <input 
+                type="text" 
+                id="lastName"
+                formControlName="lastName" 
+                class="form-input"
+                [class.error]="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched"
+                placeholder="Ingresa tu apellido"
+              />
+              <div *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched" class="error-text">
+                El apellido es requerido
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="form-section">
+          <h3 class="section-title">
+            <img src="assets/icons/mail.svg" alt="Email" class="section-icon">
+            Información de Contacto
+          </h3>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input 
+              type="email" 
+              id="email"
+              formControlName="email" 
+              class="form-input"
+              [class.error]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched"
+              placeholder="Ingresa tu correo electrónico"
+            />
+            <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="error-text">
+              <span *ngIf="profileForm.get('email')?.errors?.['required']">El correo es requerido</span>
+              <span *ngIf="profileForm.get('email')?.errors?.['email']">Ingresa un correo válido</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Section -->
+        <div class="form-section">
+          <h3 class="section-title">
+            <img src="assets/icons/lock.svg" alt="Seguridad" class="section-icon">
+            Seguridad
+          </h3>
+          
+          <div class="form-group">
+            <label for="password" class="form-label">Nueva Contraseña (opcional)</label>
+            <div class="password-input-container">
+              <input 
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                formControlName="password" 
+                class="form-input"
+                placeholder="Deja vacío para mantener la actual"
+              />
+                             <button 
+                 type="button" 
+                 class="password-toggle"
+                 (click)="togglePassword()"
+               >
+                 <img [src]="showPassword ? 'assets/icons/eye.svg' : 'assets/icons/eye-closed.svg'" alt="Ver contraseña" class="toggle-icon">
+               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

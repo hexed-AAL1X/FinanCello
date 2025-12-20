@@ -1,0 +1,78 @@
+<div class="register-container">
+  <!-- Left Panel - Register Form -->
+  <div class="form-panel">
+    <div class="form-content">
+      <h2 class="form-title">Sign Up</h2>
+      
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="firstName" 
+            formControlName="firstName" 
+            required 
+            placeholder="First Name"
+            class="form-input"
+          />
+          <span class="input-icon" aria-hidden="true">U</span>
+        </div>
+        
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="lastName" 
+            formControlName="lastName" 
+            required 
+            placeholder="Last Name"
+            class="form-input"
+          />
+          <span class="input-icon" aria-hidden="true">U</span>
+        </div>
+        
+        <div class="input-group">
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            required 
+            placeholder="E-mail"
+            class="form-input"
+          />
+          <span class="input-icon" aria-hidden="true">&#64;</span>
+        </div>
+        
+        <div class="input-group">
+          <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            required 
+            placeholder="Password"
+            class="form-input"
+          />
+          <span class="input-icon" aria-hidden="true">*</span>
+        </div>
+        
+        <button type="submit" class="register-button" [disabled]="isLoading">
+          {{ isLoading ? 'Creating account...' : 'Register' }}
+        </button>
+      </form>
+      
+      <div class="form-links">
+        <a (click)="goToLogin()" class="link">Already have an account?</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Panel - Logo FINANCELLO -->
+  <div class="logo-panel">
+    <div class="logo-content">
+      <!-- Violin with Arrow Icon -->
+      <div class="logo-icon">
+        <img class="financello-logo" src="/assets/img/financello.png" alt="FinanCello" />
+      </div>
+      <!-- FINANCELLO Text -->
+      <h1 class="logo-text">FINANCELLO</h1>
+    </div>
+  </div>
+</div>

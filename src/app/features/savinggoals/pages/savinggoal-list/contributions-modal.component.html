@@ -1,0 +1,97 @@
+<div class="modal-backdrop" *ngIf="isVisible">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>Contribuciones de: {{ goal?.name }}</h3>
+      <button class="close-btn" (click)="close()">×</button>
+    </div>
+
+    <div class="modal-content">
+      <div *ngIf="loading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Cargando contribuciones...</p>
+      </div>
+      
+      <div *ngIf="!loading">
+        <div class="contributions-summary">
+          <p><strong>Total de contribuciones:</strong> {{ totalContributions | currency:'USD' }}</p>
+          <p><strong>Número de contribuciones:</strong> {{ contributions.length }}</p>
+        </div>
+
+        <!-- Add contribution form -->
+        <div class="add-contribution-section">
+          <button 
+            class="btn btn-primary add-btn" 
+            (click)="toggleAddForm()"
+            [disabled]="addingContribution">
+            {{ showAddForm ? 'Cancelar' : 'Agregar Contribución' }}
+          </button>
+          
+          <div *ngIf="showAddForm" class="add-form">
+            <h4>Nueva Contribución</h4>
+            <div class="form-group">
+              <label for="amount">Monto:</label>
+              <input 
+                type="number" 
+                id="amount"
+                [(ngModel)]="newContribution.amount"
+                placeholder="Ingresa el monto"
+                min="0.01"
+                step="0.01"
+                [disabled]="addingContribution">
+            </div>
+            <div class="form-group">
+              <label for="date">Fecha:</label>
+              <input 
+                type="date" 
+                id="date"
+                [(ngModel)]="newContribution.date"
+                [disabled]="addingContribution">
+            </div>
+            <div class="form-actions">
+              <button 
+                class="btn btn-primary" 
+                (click)="addContribution()"
+                [disabled]="addingContribution || newContribution.amount <= 0">
+                {{ addingContribution ? 'Agregando...' : 'Agregar' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="contributions-list" *ngIf="contributions.length > 0">
+          <h4>Lista de Contribuciones ({{ contributions.length }})</h4>
+          <div class="contribution-item" *ngFor="let contribution of contributions; let i = index">
+            <div class="contribution-info">
+              <span class="contribution-number">#{{ i + 1 }}</span>
+              <span class="amount">{{ contribution.amount | currency:'USD' }}</span>
+              <span class="date">{{ contribution.date | date:'dd/MM/yyyy' }}</span>
+            </div>
+            <button 
+              class="delete-btn" 
+              (click)="deleteContribution(contribution.contributionId)"
+              [disabled]="deletingContribution === contribution.contributionId">
+              {{ deletingContribution === contribution.contributionId ? 'Eliminando...' : 'Eliminar' }}
+            </button>
+          </div>
+        </div>
+
+        <div class="no-contributions" *ngIf="!loading && contributions.length === 0">
+          <p>No hay contribuciones registradas para esta meta.</p>
+          <p class="debug-info">Meta ID: {{ goal?.id }} | Meta: {{ goal?.name }}</p>
+        </div>
+
+
+
+        <div class="modal-actions">
+          <button 
+            class="btn btn-primary" 
+            (click)="deleteAllContributions()"
+            [disabled]="contributions.length === 0 || deletingAll">
+            {{ deletingAll ? 'Eliminando todas...' : 'Eliminar todas las contribuciones' }}
+          </button>
+          <button class="btn btn-cancel" (click)="close()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

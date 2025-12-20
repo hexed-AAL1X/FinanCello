@@ -1,0 +1,606 @@
+<div class="r" #landingRoot>
+  <header class="h" [class.is-scrolled]="isHeaderScrolled">
+    <div class="hc">
+      <div class="hb">
+        <img src="/assets/img/favicon.png" alt="FinanCello" class="bi">
+        <span class="bt">FinanCello</span>
+      </div>
+      <nav class="hn">
+        <a href="#soluciones" class="nl">Soluciones</a>
+        <a href="#funciones" class="nl">Funciones</a>
+        <a href="#testimonios" class="nl">Testimonios</a>
+        <a href="#nosotros" class="nl">Nosotros</a>
+        <a href="#contacto" class="nl">Contacto</a>
+      </nav>
+      <div class="ha">
+        <button class="btn btn-secondary" (click)="navigateToLogin()">Ingresar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="m">
+    <section class="hero" id="inicio">
+      <div class="hec">
+        <div class="hco">
+          <div class="hero-badge">
+            <span class="badge-text">Herramientas de perforación para finanzas personales</span>
+          </div>
+          <h1 class="ht">
+            <span class="ht-line1">
+              <span class="th" #typedElement></span>
+              <span class="ht-join">de tus finanzas</span>
+            </span>
+            <span class="ht-line2">personales y empresariales</span>
+          </h1>
+          <p class="hd">
+            FinanCello es la plataforma integral para gestionar ingresos, egresos, metas de ahorro y presupuestos. Toma decisiones financieras informadas con herramientas profesionales.
+          </p>
+        </div>
+      </div>
+      <svg
+        class="hero-waves"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <defs>
+          <path
+            id="wave-path"
+            d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+          ></path>
+        </defs>
+        <g class="wave1">
+          <use xlink:href="#wave-path" href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"></use>
+        </g>
+        <g class="wave2">
+          <use xlink:href="#wave-path" href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"></use>
+        </g>
+        <g class="wave3">
+          <use xlink:href="#wave-path" href="#wave-path" x="50" y="9" fill="#fff"></use>
+        </g>
+      </svg>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="soluciones">
+      <div class="about-container">
+        <div class="about-content" data-aos="fade-right" data-aos-duration="800">
+          <h2 class="section-title">¿Qué es FinanCello?</h2>
+          <p class="section-description">
+            FinanCello es una plataforma integral de gestión financiera diseñada específicamente para personas y pequeñas empresas que buscan tomar control total de su economía. Desarrollada con las mejores prácticas en tecnología financiera.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">+5</div>
+              <div class="stat-label">Módulos integrados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Datos seguros</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Disponibilidad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Destacados -->
+    <section class="featured-products" id="funciones">
+      <div class="featured-container">
+        <div class="featured-header" data-aos="fade-up" data-aos-duration="600">
+          <h2 class="section-title">Funciones <span class="title-accent">destacadas</span></h2>
+        </div>
+        <div class="featured-grid">
+          <div class="product-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <div class="product-image">
+              <div class="product-preview">
+                <lucide-icon name="receipt" size="32" class="preview-icon"></lucide-icon>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Movimientos</h3>
+              <p class="product-description">Registra y categoriza ingresos y egresos con importación desde Excel.</p>
+              <button class="product-button">
+                <span>Ver más</span>
+                <lucide-icon name="arrow-right" size="16"></lucide-icon>
+              </button>
+            </div>
+          </div>
+          <div class="product-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+            <div class="product-image">
+              <div class="product-preview">
+                <lucide-icon name="target" size="32" class="preview-icon"></lucide-icon>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Metas de Ahorro</h3>
+              <p class="product-description">Crea y da seguimiento a tus objetivos financieros con contribuciones medibles.</p>
+              <button class="product-button">
+                <span>Ver más</span>
+                <lucide-icon name="arrow-right" size="16"></lucide-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Lines -->
+    <section class="business-lines" id="testimonios">
+      <div class="business-container">
+        <div class="business-header" data-aos="fade-up" data-aos-duration="600">
+          <h2 class="section-title">Líneas de <span class="title-accent">negocio</span></h2>
+        </div>
+        <div class="business-grid">
+          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+            <div class="business-image">
+              <div class="business-preview">
+                <lucide-icon name="user" size="48" class="business-icon"></lucide-icon>
+              </div>
+            </div>
+            <div class="business-info">
+              <h3 class="business-title">Personas</h3>
+              <p class="business-description">Gestión financiera personal para individuos y familias.</p>
+            </div>
+          </div>
+          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+            <div class="business-image">
+              <div class="business-preview">
+                <lucide-icon name="building" size="48" class="business-icon"></lucide-icon>
+              </div>
+            </div>
+            <div class="business-info">
+              <h3 class="business-title">PyMEs</h3>
+              <p class="business-description">Soluciones financieras para pequeñas y medianas empresas.</p>
+            </div>
+          </div>
+          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+            <div class="business-image">
+              <div class="business-preview">
+                <lucide-icon name="briefcase" size="48" class="business-icon"></lucide-icon>
+              </div>
+            </div>
+            <div class="business-info">
+              <h3 class="business-title">Emprendedores</h3>
+              <p class="business-description">Herramientas para startups y nuevos negocios.</p>
+            </div>
+          </div>
+          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+            <div class="business-image">
+              <div class="business-preview">
+                <lucide-icon name="graduation-cap" size="48" class="business-icon"></lucide-icon>
+              </div>
+            </div>
+            <div class="business-info">
+              <h3 class="business-title">Estudiantes</h3>
+              <p class="business-description">Educación financiera para jóvenes y estudiantes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust" id="nosotros">
+      <div class="trust-container">
+        <div class="trust-header" data-aos="fade-up" data-aos-duration="600">
+          <div class="trust-badge">NUESTROS CLIENTES</div>
+          <h2 class="section-title">Ellos confían en <span class="title-accent">nosotros</span></h2>
+        </div>
+        <p class="trust-description" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+          Somos una empresa orientada y enfocada en brindar el mejor servicio y la mayor calidad en productos y servicios tecnológicos para el control financiero personal y empresarial.
+        </p>
+        <div class="trust-logos" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <div class="logo-row">
+            <div class="trust-logo">BANCO FINANCIAL</div>
+            <div class="trust-logo">CONTADORES UNIDOS</div>
+            <div class="trust-logo">NEXA</div>
+            <div class="trust-logo">GESTIÓN +</div>
+            <div class="trust-logo">FINTECH</div>
+            <div class="trust-logo">ADVISORS</div>
+          </div>
+          <div class="logo-row">
+            <div class="trust-logo">PLANNING</div>
+            <div class="trust-logo">SOLUTIONS</div>
+            <div class="trust-logo">GLENCORE</div>
+            <div class="trust-logo">EXECUTIVE</div>
+            <div class="trust-logo">GOLDEN MOUNTAIN</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contacto">
+      <div class="cta-container">
+        <div class="cta-content">
+          <div class="cta-left" data-aos="fade-right" data-aos-duration="800">
+            <div class="cta-badge">ATENCIÓN AL CLIENTE</div>
+            <h2 class="cta-title">Atención al cliente</h2>
+            <p class="cta-description">
+              Estamos aquí para ayudarte. Nuestro equipo de soporte está disponible para resolver cualquier consulta sobre FinanCello y guiarte en tu experiencia financiera.
+            </p>
+            <div class="cta-features">
+              <div class="feature-item">
+                <lucide-icon name="check" size="16" class="check-icon"></lucide-icon>
+                <span>Soporte 24/7 disponible</span>
+              </div>
+              <div class="feature-item">
+                <lucide-icon name="check" size="16" class="check-icon"></lucide-icon>
+                <span>Respuesta rápida garantizada</span>
+              </div>
+              <div class="feature-item">
+                <lucide-icon name="check" size="16" class="check-icon"></lucide-icon>
+                <span>Equipo especializado en finanzas</span>
+              </div>
+            </div>
+            <button class="btn btn-primary cta-button" (click)="navigateToLogin()">
+              <span>Ingresar</span>
+              <lucide-icon name="arrow-right" size="18"></lucide-icon>
+            </button>
+          </div>
+          <div class="cta-right" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+            <div class="contact-card">
+              <h3 class="contact-title">Póngase en contacto</h3>
+              <p class="contact-subtitle">Escríbanos sus datos para recibir más información</p>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <lucide-icon name="phone" size="16"></lucide-icon>
+                  <span>+51 999 888 777</span>
+                </div>
+                <div class="contact-item">
+                  <lucide-icon name="mail" size="16"></lucide-icon>
+                  <span>contacto&#64;financello.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work With Us -->
+    <section class="work-with-us">
+      <div class="work-container">
+        <div class="work-content" data-aos="fade-up" data-aos-duration="800">
+          <h2 class="work-title">Trabaje con nosotros</h2>
+          <p class="work-description">
+            FinanCello está en constante evolución y crecimiento. Únete a nuestro equipo de desarrollo y sé parte de la revolución financiera digital.
+          </p>
+          <a href="https://github.com/FinanCello" target="_blank" class="work-button">
+            <span>Repositorio GitHub</span>
+            <lucide-icon name="external-link" size="18"></lucide-icon>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="/assets/img/favicon.png" alt="FinanCello" class="footer-logo-img">
+            <span class="footer-logo-text">FinanCello</span>
+          </div>
+          <p class="footer-description">
+            Plataforma integral de gestión financiera para personas y pequeñas empresas.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="footer-title">PRODUCTO</h4>
+            <ul class="footer-list">
+              <li><a href="#funciones" class="footer-link">Funciones</a></li>
+              <li><a href="#" class="footer-link">Precios</a></li>
+              <li><a href="#" class="footer-link">Integraciones</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">SOPORTE</h4>
+            <ul class="footer-list">
+              <li><a href="#contacto" class="footer-link">Contacto</a></li>
+              <li><a href="#" class="footer-link">Ayuda</a></li>
+              <li><a href="#" class="footer-link">Documentación</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">EMPRESA</h4>
+            <ul class="footer-list">
+              <li><a href="#nosotros" class="footer-link">Nosotros</a></li>
+              <li><a href="#" class="footer-link">Carreras</a></li>
+              <li><a href="https://github.com/FinanCello" class="footer-link" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">CONTACTO</h4>
+            <ul class="footer-list">
+              <li class="footer-contact">
+                <lucide-icon name="mail" size="16"></lucide-icon>
+                <span>contacto&#64;financello.com</span>
+              </li>
+              <li class="footer-contact">
+                <lucide-icon name="phone" size="16"></lucide-icon>
+                <span>+51 999 888 777</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="footer-copyright">&copy; 2025 FinanCello. Todos los derechos reservados.</p>
+          <div class="footer-legal">
+            <a href="#" class="footer-legal-link">Términos de Uso</a>
+            <a href="#" class="footer-legal-link">Política de Privacidad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div
+    class="auth-overlay"
+    [class.is-open]="isAuthModalOpen"
+    (click)="closeAuthModal()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-hidden]="!isAuthModalOpen"
+  >
+    <div class="auth-modal" (click)="$event.stopPropagation()" data-lenis-prevent>
+      <div class="auth-modal-header">
+        <div class="auth-brand">
+          <img src="/assets/img/financello.png" alt="FinanCello" class="auth-brand-logo" />
+        </div>
+        <button type="button" class="auth-close" (click)="closeAuthModal()" aria-label="Cerrar">
+          <lucide-icon name="x" size="20"></lucide-icon>
+        </button>
+      </div>
+
+      <div class="auth-tabs" role="tablist" aria-label="Autenticación">
+        <button
+          type="button"
+          class="auth-tab"
+          [class.is-active]="authTab === 'login'"
+          (click)="setAuthTab('login')"
+          role="tab"
+          [attr.aria-selected]="authTab === 'login'"
+        >
+          Iniciar sesión
+        </button>
+        <button
+          type="button"
+          class="auth-tab"
+          [class.is-active]="authTab === 'signup'"
+          (click)="setAuthTab('signup')"
+          role="tab"
+          [attr.aria-selected]="authTab === 'signup'"
+        >
+          Crear cuenta
+        </button>
+      </div>
+
+      <div class="auth-body" [class.is-signup]="authTab === 'signup'">
+        <div class="auth-forms" [class.is-signup]="authTab === 'signup'">
+          <form
+            class="auth-form auth-form-login"
+            [attr.aria-hidden]="authTab !== 'login'"
+            [attr.inert]="authTab !== 'login' ? '' : null"
+            [formGroup]="loginForm"
+            (ngSubmit)="submitLogin()"
+            autocomplete="on"
+          >
+            <div class="auth-title">Bienvenido de vuelta</div>
+            <div class="auth-caption">Ingresa para ver tu dashboard y tus metas.</div>
+
+            <div class="auth-social">
+              <div class="auth-social-label">O continúa con</div>
+              <div class="auth-social-row">
+                <button
+                  type="button"
+                  class="auth-social-btn"
+                  (click)="loginWithGoogle()"
+                  [disabled]="isAuthLoading"
+                >
+                  <span class="auth-social-icon google" aria-hidden="true">G</span>
+                  Google
+                </button>
+                <button
+                  type="button"
+                  class="auth-social-btn"
+                  (click)="loginWithMicrosoft()"
+                  [disabled]="isAuthLoading"
+                >
+                  <span class="auth-social-icon microsoft" aria-hidden="true"></span>
+                  Microsoft
+                </button>
+              </div>
+            </div>
+
+            <label class="auth-field">
+              <span class="auth-label">Correo</span>
+              <input class="auth-input" type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+              <span class="auth-error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                Ingresa un correo válido.
+              </span>
+            </label>
+            <label class="auth-field">
+              <span class="auth-label">Contraseña</span>
+              <div class="auth-password">
+                <input
+                  class="auth-input"
+                  [type]="showLoginPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  placeholder="Tu contraseña"
+                />
+                <button type="button" class="auth-eye" (click)="toggleLoginPassword()" aria-label="Ver contraseña">
+                  <img
+                    [src]="showLoginPassword ? '/assets/icons/eye-closed.svg' : '/assets/icons/eye.svg'"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <span class="auth-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                La contraseña es obligatoria.
+              </span>
+            </label>
+            <button type="submit" class="auth-submit" [disabled]="isAuthLoading">
+              <span *ngIf="!isAuthLoading">Iniciar sesión</span>
+              <span *ngIf="isAuthLoading">Iniciando...</span>
+            </button>
+            <div class="auth-switch">
+              ¿No tienes cuenta?
+              <button type="button" class="auth-link" (click)="setAuthTab('signup')">Regístrate</button>
+            </div>
+          </form>
+
+          <form
+            class="auth-form auth-form-signup"
+            [attr.aria-hidden]="authTab !== 'signup'"
+            [attr.inert]="authTab !== 'signup' ? '' : null"
+            [formGroup]="signupForm"
+            (ngSubmit)="submitSignup()"
+            autocomplete="on"
+          >
+            <div class="auth-title">Crea tu cuenta</div>
+            <div class="auth-caption">Empieza a controlar tus ingresos, gastos y metas.</div>
+            <div class="auth-segment" role="group" aria-label="Tipo de cuenta">
+              <button
+                type="button"
+                class="auth-seg"
+                [class.is-active]="signupForm.get('userType')?.value === UserType.PERSONAL"
+                (click)="setUserType(UserType.PERSONAL)"
+              >
+                Personal
+              </button>
+              <button
+                type="button"
+                class="auth-seg"
+                [class.is-active]="signupForm.get('userType')?.value === UserType.BUSINESS"
+                (click)="setUserType(UserType.BUSINESS)"
+              >
+                Empresa
+              </button>
+            </div>
+
+            <div class="auth-grid">
+              <label class="auth-field">
+                <span class="auth-label">Nombres</span>
+                <input class="auth-input" type="text" formControlName="firstName" placeholder="Tu nombre" />
+                <span
+                  class="auth-error"
+                  *ngIf="signupForm.get('firstName')?.touched && signupForm.get('firstName')?.invalid"
+                >
+                  Campo obligatorio.
+                </span>
+              </label>
+
+              <label class="auth-field">
+                <span class="auth-label">Apellidos</span>
+                <input class="auth-input" type="text" formControlName="lastName" placeholder="Tu apellido" />
+                <span
+                  class="auth-error"
+                  *ngIf="signupForm.get('lastName')?.touched && signupForm.get('lastName')?.invalid"
+                >
+                  Campo obligatorio.
+                </span>
+              </label>
+            </div>
+
+            <label class="auth-field">
+              <span class="auth-label">Correo</span>
+              <input class="auth-input" type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+              <span class="auth-error" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+                Ingresa un correo válido.
+              </span>
+            </label>
+
+            <label class="auth-field">
+              <span class="auth-label">Contraseña</span>
+              <div class="auth-password">
+                <input
+                  class="auth-input"
+                  [type]="showSignupPassword ? 'text' : 'password'"
+                  formControlName="password"
+                  placeholder="Crea una contraseña"
+                />
+                <button type="button" class="auth-eye" (click)="toggleSignupPassword()" aria-label="Ver contraseña">
+                  <img
+                    [src]="showSignupPassword ? '/assets/icons/eye-closed.svg' : '/assets/icons/eye.svg'"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <span class="auth-error" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+                La contraseña es obligatoria.
+              </span>
+            </label>
+
+            <label class="auth-field">
+              <span class="auth-label">Confirmar contraseña</span>
+              <div class="auth-password">
+                <input
+                  class="auth-input"
+                  [type]="showSignupConfirmPassword ? 'text' : 'password'"
+                  formControlName="confirmPassword"
+                  placeholder="Repite la contraseña"
+                />
+                <button
+                  type="button"
+                  class="auth-eye"
+                  (click)="toggleSignupConfirmPassword()"
+                  aria-label="Ver contraseña"
+                >
+                  <img
+                    [src]="showSignupConfirmPassword ? '/assets/icons/eye-closed.svg' : '/assets/icons/eye.svg'"
+                    alt=""
+                  />
+                </button>
+              </div>
+              <span
+                class="auth-error"
+                *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.invalid"
+              >
+                Confirma tu contraseña.
+              </span>
+              <span
+                class="auth-error"
+                *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.hasError('passwordMismatch')"
+              >
+                Las contraseñas no coinciden.
+              </span>
+            </label>
+
+            <label class="auth-checkbox">
+              <input type="checkbox" formControlName="terms" />
+              <span>
+                Acepto los
+                <span class="auth-terms">términos y condiciones</span>
+              </span>
+            </label>
+            <span class="auth-error" *ngIf="signupForm.get('terms')?.touched && signupForm.get('terms')?.invalid">
+              Debes aceptar los términos.
+            </span>
+
+            <button type="submit" class="auth-submit" [disabled]="isAuthLoading">
+              <span *ngIf="!isAuthLoading">Crear cuenta</span>
+              <span *ngIf="isAuthLoading">Creando...</span>
+            </button>
+
+            <div class="auth-switch">
+              ¿Ya tienes cuenta?
+              <button type="button" class="auth-link" (click)="setAuthTab('login')">Inicia sesión</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

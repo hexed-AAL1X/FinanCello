@@ -1,0 +1,176 @@
+<div class="home-container">
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <div class="welcome-inline-col">
+      <div class="welcome-inline">
+        <h1 class="welcome-title">¡Bienvenido de vuelta</h1>
+        <span class="welcome-title">{{ userInfo.firstName }} {{ userInfo.lastName }}!</span>
+      </div>
+      <div class="welcome-subtitle">Aquí tienes un resumen de tus finanzas</div>
+    </div>
+    <div class="current-date">{{ currentDate | date:'EEEE, d MMMM yyyy' }}</div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <!-- Loading State for Stats -->
+    <div class="loading-state" *ngIf="isLoadingStats">
+      <div class="loading-spinner"></div>
+      <p>Cargando estadísticas...</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stat-card income-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <lucide-icon name="trending-up" size="22" aria-label="Ingresos"></lucide-icon>
+      </div>
+      <div class="stat-value">{{ financialStats.totalIncome | currency }}</div>
+      <div class="stat-label">Ingresos del mes</div>
+      <div class="stat-change positive">Total</div>
+    </div>
+
+    <div class="stat-card expense-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <lucide-icon name="trending-down" size="22" aria-label="Gastos"></lucide-icon>
+      </div>
+      <div class="stat-value">{{ financialStats.totalExpenses | currency }}</div>
+      <div class="stat-label">Gastos del mes</div>
+      <div class="stat-change negative">Total</div>
+    </div>
+
+    <div class="stat-card balance-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <lucide-icon name="wallet" size="22" aria-label="Saldo actual"></lucide-icon>
+      </div>
+      <div class="stat-value" [class.negative-balance]="financialStats.currentBalance < 0">
+        {{ formatBalance(financialStats.currentBalance) }}
+      </div>
+      <div class="stat-label">Balance actual</div>
+      <div class="stat-change" [class]="financialStats.currentBalance >= 0 ? 'balance' : 'negative'">
+        {{ financialStats.currentBalance >= 0 ? 'Positivo' : 'Negativo' }}
+      </div>
+    </div>
+
+    <div class="stat-card goals-card" *ngIf="!isLoadingStats">
+      <div class="stat-icon">
+        <lucide-icon name="piggy-bank" size="22" aria-label="Ahorros"></lucide-icon>
+      </div>
+      <div class="stat-value">{{ financialStats.totalSavings | currency }}</div>
+      <div class="stat-label">Ahorros totales</div>
+      <div class="stat-change savings">Total</div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="main-grid">
+    <!-- Transactions Section -->
+    <div class="transactions-section">
+      <div class="section-header">
+        <h2>Transacciones Recientes</h2>
+        <button class="view-all-btn" routerLink="/dashboard/transactions">Ver todas</button>
+      </div>
+      
+      <!-- Loading State -->
+      <div class="loading-state" *ngIf="isLoading">
+        <div class="loading-spinner"></div>
+        <p>Cargando transacciones...</p>
+      </div>
+
+      <!-- Transactions List -->
+      <div class="transactions-list" *ngIf="!isLoading">
+        <div class="transaction-item" *ngFor="let transaction of recentTransactions">
+          <div class="transaction-icon" [class]="transaction.type">
+            <lucide-icon
+              [name]="transaction.type === 'income' ? 'arrow-down-left' : 'arrow-up-right'"
+              size="18"
+              aria-label="Tipo de transacción">
+            </lucide-icon>
+          </div>
+          <div class="transaction-details">
+            <div class="transaction-title">{{ transaction.category }}</div>
+            <div class="transaction-category">{{ transaction.title }}</div>
+            <div class="transaction-date">{{ formatDate(transaction.date) }}</div>
+          </div>
+          <div class="transaction-amount" [class]="transaction.type">
+            {{ transaction.type === 'income' ? '+' : '-' }}{{ transaction.amount | currency }}
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="recentTransactions.length === 0">
+          <p>No hay transacciones recientes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <h2>Acciones Rápidas</h2>
+      <div class="actions-grid">
+        <button class="action-btn" (click)="goToAddMovement()">
+          <lucide-icon name="plus" size="20" aria-label="Agregar Movimiento"></lucide-icon>
+          <span>Agregar Movimiento</span>
+        </button>
+        <button class="action-btn" (click)="goToAddCategory()">
+          <lucide-icon name="chart-pie" size="20" aria-label="Nueva Categoría"></lucide-icon>
+          <span>Nueva Categoría</span>
+        </button>
+        <button class="action-btn" (click)="goToAddGoal()">
+          <lucide-icon name="target" size="20" aria-label="Meta de Ahorro"></lucide-icon>
+          <span>Meta de Ahorro</span>
+        </button>
+        <button class="action-btn" (click)="goToReports()">
+          <lucide-icon name="file-text" size="20" aria-label="Ver Reportes"></lucide-icon>
+          <span>Ver Reportes</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="goals-section">
+      <h2>Metas de Ahorro</h2>
+      
+      <!-- Loading State -->
+      <div class="loading-state" *ngIf="isLoadingGoals">
+        <div class="loading-spinner"></div>
+        <p>Cargando metas de ahorro...</p>
+      </div>
+
+      <!-- Goals List -->
+      <div class="goals-list" *ngIf="!isLoadingGoals">
+        <!-- Display actual goals -->
+        <div class="goal-item" *ngFor="let goal of recentGoals">
+          <div class="goal-title">{{ goal.title }}</div>
+          <div class="goal-description">{{ goal.description }}</div>
+          <div class="goal-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="goal.progress"></div>
+            </div>
+            <div class="progress-text">{{ goal.progress }}% completado</div>
+          </div>
+          <div class="goal-amount">
+            <span class="current-amount">{{ goal.currentAmount | currency }}</span>
+            <span class="target-amount">de {{ goal.targetAmount | currency }}</span>
+          </div>
+        </div>
+
+        <!-- Display placeholder cards when no goals -->
+        <div class="goal-item placeholder" *ngFor="let item of [1,2,3,4]; let i = index" 
+             [style.display]="recentGoals.length > 0 ? 'none' : 'block'">
+          <div class="goal-title">-</div>
+          <div class="goal-description">-</div>
+          <div class="goal-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">0% completado</div>
+          </div>
+          <div class="goal-amount">
+            <span class="current-amount">$0</span>
+            <span class="target-amount">de $0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

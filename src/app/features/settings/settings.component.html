@@ -1,0 +1,36 @@
+<div class="settings-main-container">
+  <h1 class="settings-title">
+    <img src="assets/icons/settings.svg" alt="Settings" class="settings-main-icon" />
+    Configuración
+  </h1>
+  <p class="settings-desc">Ofrece diversas herramientas para adaptar la experiencia del usuario.</p>
+
+  <div class="settings-cards-grid">
+    <button class="settings-card" (click)="goToSpendingLimit()">
+      <img src="assets/icons/wallet.svg" alt="Presupuesto" class="settings-card-icon" />
+      <div class="settings-card-content">
+        <div class="settings-card-title">Planificación de presupuestos</div>
+        <div class="settings-card-desc">Planifica un presupuesto de gasto para tus actividades</div>
+      </div>
+      <span class="settings-card-arrow">→</span>
+    </button>
+    <button class="settings-card" (click)="goToSpendingLimit()">
+      <img src="assets/icons/warning.png" alt="Límites" class="settings-card-icon" />
+      <div class="settings-card-content">
+        <div class="settings-card-title">Límites de gastos</div>
+        <div class="settings-card-desc">Crea un límite de gasto a una categoría existente</div>
+      </div>
+      <span class="settings-card-arrow">→</span>
+    </button>
+
+    <button class="settings-card" (click)="goToCategories()">
+      <img src="assets/icons/chart-pie.svg" alt="Categorías" class="settings-card-icon" />
+      <div class="settings-card-content">
+        <div class="settings-card-title">Creación de categorías</div>
+        <div class="settings-card-desc">Crea una categoría para organizar tus movimientos</div>
+      </div>
+      <span class="settings-card-arrow">→</span>
+    </button>
+  </div>
+</div>
+<router-outlet></router-outlet>

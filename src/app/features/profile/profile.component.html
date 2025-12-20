@@ -1,0 +1,110 @@
+<div class="profile-container">
+  <!-- Header -->
+  <div class="profile-header">
+    <h1 class="profile-title">Mi Perfil</h1>
+    <button *ngIf="!isEditing" class="edit-button" (click)="navigateToEdit()">
+      <img src="assets/icons/user-gear.png" alt="Editar" class="edit-icon">
+      Editar Perfil
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Cargando perfil...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="errorMessage" class="error-message">
+    <img src="assets/icons/error.png" alt="Error" class="error-icon">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message">
+    <img src="assets/icons/success.png" alt="Éxito" class="success-icon">
+    {{ successMessage }}
+  </div>
+
+  <!-- Profile Content -->
+  <div *ngIf="!isEditing" class="profile-content">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="profile-avatar">
+        <div class="avatar-circle">
+          <span class="avatar-initials">{{ getInitials() }}</span>
+        </div>
+        <div class="user-role">
+          <span class="role-badge">{{ userInfo?.role || 'USUARIO' }}</span>
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <h2 class="user-name">{{ userInfo?.firstName }} {{ userInfo?.lastName }}</h2>
+        <p class="user-email">{{ userInfo?.email }}</p>
+        <p class="user-id">ID: {{ userInfo?.id }}</p>
+      </div>
+    </div>
+
+    <!-- Profile Details -->
+    <div class="profile-details">
+      <div class="details-section">
+        <h3 class="section-title">Información Personal</h3>
+        
+        <div class="detail-row">
+          <div class="detail-label">
+            <img src="assets/icons/user.svg" alt="Usuario" class="detail-icon">
+            Nombre Completo
+          </div>
+          <div class="detail-value">{{ userInfo?.firstName }} {{ userInfo?.lastName }}</div>
+        </div>
+
+        <div class="detail-row">
+          <div class="detail-label">
+            <img src="assets/icons/mail.svg" alt="Email" class="detail-icon">
+            Correo Electrónico
+          </div>
+          <div class="detail-value">{{ userInfo?.email }}</div>
+        </div>
+
+        <div class="detail-row">
+          <div class="detail-label">
+            <img src="assets/icons/lock.svg" alt="Rol" class="detail-icon">
+            Rol de Usuario
+          </div>
+          <div class="detail-value">
+            <span class="role-tag">{{ userInfo?.role || 'USUARIO' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="details-section">
+        <h3 class="section-title">Estadísticas de Cuenta</h3>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <img src="assets/icons/calendar.svg" alt="Última transacción" class="stat-icon-img">
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" *ngIf="lastMovementDate">{{ lastMovementDate | date:'dd/MM/yyyy HH:mm' }}</div>
+              <div class="stat-value" *ngIf="!lastMovementDate">N/A</div>
+              <div class="stat-label">Última transacción realizada</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <img src="assets/icons/wallet.svg" alt="Transacciones" class="stat-icon-img">
+            </div>
+            <div class="stat-content">
+              <div class="stat-value">{{ transactionCount }}</div>
+              <div class="stat-label">Transacciones realizadas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

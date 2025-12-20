@@ -1,0 +1,168 @@
+<div class="categories-container">
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="loading-spinner"></div>
+    <p>Cargando categorías y movimientos...</p>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!isLoading">
+    <!-- Header Section -->
+    <div class="categories-header">
+    <div class="header-content">
+      <div class="header-info">
+        <h1 class="page-title">📊 Gestión de Categorías</h1>
+        <p class="page-subtitle">Organiza y visualiza tus movimientos financieros por categorías</p>
+      </div>
+      <div class="header-actions">
+        <button class="refresh-btn" (click)="onRefreshData()" title="Actualizar datos">
+          <span class="btn-icon">🔄</span>
+        </button>
+        <button class="add-category-btn" (click)="onAddCategory()">
+          <span class="btn-icon">+</span>
+          <span>Nueva Categoría</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat-icon income">💰</div>
+      <div class="stat-info">
+        <div class="stat-value">{{ formatAmount(getTotalByType('INCOME')) }}</div>
+        <div class="stat-label">Total Ingresos</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon outcome">💸</div>
+      <div class="stat-info">
+        <div class="stat-value">{{ formatAmount(getTotalByType('OUTCOME')) }}</div>
+        <div class="stat-label">Total Gastos</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon neutral">📊</div>
+      <div class="stat-info">
+        <div class="stat-value">{{ getTotalMovements() }}</div>
+        <div class="stat-label">Movimientos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories Grid -->
+  <div class="categories-section">
+    <div class="section-header">
+      <h2 class="section-title">Categorías</h2>
+      <p class="section-subtitle">Gestiona tus categorías de gastos e ingresos</p>
+    </div>
+    
+    <div class="categories-grid">
+      <div class="category-card" *ngFor="let category of categories">
+        <div class="category-header">
+          <div class="category-icon" [style.background-color]="category.color">
+            <span class="icon">{{ category.icon }}</span>
+          </div>
+          <div class="category-info">
+            <h3 class="category-name">{{ category.name }}</h3>
+            <p class="category-description">{{ category.description }}</p>
+          </div>
+        </div>
+        
+        <div class="category-stats">
+          <div class="stat-item">
+            <span class="stat-label">Total</span>
+            <span class="stat-value">{{ formatAmount(category.totalAmount) }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Movimientos</span>
+            <span class="stat-value">{{ category.movementCount }}</span>
+          </div>
+        </div>
+        
+        <div class="category-actions">
+          <button class="action-btn edit-btn" (click)="onEditCategory(category)" title="Editar categoría">
+            <span class="action-icon">✏️</span>
+          </button>
+          <button class="action-btn delete-btn" (click)="onDeleteCategory(category)" title="Eliminar categoría">
+            <span class="action-icon">🗑️</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Add Category Card -->
+      <div class="category-card add-category-card" (click)="onAddCategory()">
+        <div class="add-content">
+          <div class="add-icon">+</div>
+          <h3 class="add-title">Nueva Categoría</h3>
+          <p class="add-description">Crear una nueva categoría</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Movements Section -->
+  <div class="movements-section">
+    <div class="section-header">
+      <h2 class="section-title">Movimientos Recientes</h2>
+      <div class="filters">
+        <select class="filter-select" #categorySelect (change)="onCategorySelect(categorySelect.value ? +categorySelect.value : null)">
+          <option value="">Todas las categorías</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+        
+        <select class="filter-select" #typeSelect (change)="onTypeSelect(typeSelect.value || null)">
+          <option value="">Todos los tipos</option>
+          <option value="INCOME">Ingresos</option>
+          <option value="OUTCOME">Gastos</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="movements-table">
+      <div class="table-header">
+        <div class="header-cell">Fecha</div>
+        <div class="header-cell">Descripción</div>
+        <div class="header-cell">Categoría</div>
+        <div class="header-cell">Tipo</div>
+        <div class="header-cell">Monto</div>
+      </div>
+      
+      <div class="table-row" *ngFor="let movement of getFilteredMovements()">
+        <div class="table-cell date-cell">
+          {{ formatDate(movement.date) }}
+        </div>
+        <div class="table-cell description-cell">
+          {{ movement.description }}
+        </div>
+        <div class="table-cell category-cell">
+          <span class="category-badge" [style.background-color]="movement.categoryColor">
+            {{ getCategoryIcon(movement.category) }} {{ movement.category }}
+          </span>
+        </div>
+        <div class="table-cell type-cell">
+          <span class="type-badge" [class.income]="movement.type === 'INCOME'" [class.outcome]="movement.type === 'OUTCOME'">
+            {{ movement.type === 'INCOME' ? 'Ingreso' : 'Gasto' }}
+          </span>
+        </div>
+        <div class="table-cell amount-cell" [class.income]="movement.type === 'INCOME'" [class.outcome]="movement.type === 'OUTCOME'">
+          {{ movement.type === 'INCOME' ? '+' : '-' }}{{ formatAmount(Math.abs(movement.amount)) }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="getFilteredMovements().length === 0">
+      <div class="empty-icon">📊</div>
+      <h3>No hay movimientos</h3>
+      <p>No se encontraron movimientos con los filtros seleccionados.</p>
+    </div>
+  </div>
+  </div>
+  
+  <!-- Router outlet para el formulario de categorías -->
+  <router-outlet></router-outlet>
+</div>

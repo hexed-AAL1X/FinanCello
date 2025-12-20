@@ -1,0 +1,107 @@
+<div class="page-container">
+    <!-- Header con controles -->
+    <div class="header-controls">
+        <button class="refresh-btn" (click)="refreshAlerts()" [disabled]="isLoading">
+            🔄 {{ isLoading ? 'Cargando...' : 'Actualizar' }}
+        </button>
+        <button class="notification-btn" (click)="requestNotificationPermission()">
+            🔔 Notificaciones
+        </button>
+        <button class="dismiss-all-btn" (click)="dismissAll()" *ngIf="alerts.length > 1">
+            🗑️ Descartar Todas
+        </button>
+    </div>
+
+    <!-- Estados de carga y error -->
+    <div *ngIf="isLoading" class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Cargando alertas...</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-state">
+        <p>{{ errorMessage }}</p>
+        <button (click)="refreshAlerts()">Reintentar</button>
+    </div>
+
+    <!-- Lista de tarjetas de alerta -->
+    <div class="reminders-container" *ngIf="!isLoading && !errorMessage && alerts.length; else noAlerts">
+        <div
+                class="reminder-card"
+                *ngFor="let alert of alerts"
+                (click)="selectAlert(alert)"
+                [ngClass]="getAlertSeverity(alert)"
+                [style.border-left-color]="getAlertColor(alert)"
+        >
+            <div class="alert-icon">{{ getAlertIcon(alert) }}</div>
+            <div class="alert-info">
+                <span class="category-name">{{ alert.categoryName }}</span>
+                <span class="alert-details">
+                    ${{ alert.totalSpent }} / ${{ alert.monthlyLimit }}
+                </span>
+            </div>
+            <button class="dismiss-btn" (click)="dismiss(alert); $event.stopPropagation()">×</button>
+        </div>
+    </div>
+
+    <ng-template #noAlerts>
+        <div class="no-alerts-container">
+            <div class="no-alerts-icon">✅</div>
+            <h3>¡Excelente!</h3>
+            <p>No tienes alertas de límite de gastos activas.</p>
+            <p class="subtitle">Todos tus gastos están dentro de los límites establecidos.</p>
+        </div>
+    </ng-template>
+
+    <!-- Detalle de la alerta seleccionada -->
+    <form class="form-container" *ngIf="selectedAlert && !isLoading">
+        <div class="form-fields" style="text-align: center;">
+
+            <h2 class="alert-header" [style.background-color]="getAlertColor(selectedAlert)">
+                {{ getAlertIcon(selectedAlert) }} ¡Límite superado!
+            </h2>
+
+            <!-- Mensaje de alerta (si lo provee el backend) -->
+            <p *ngIf="selectedAlert.alertMessage" class="alert-message">
+                <strong>{{ selectedAlert.alertMessage }}</strong>
+            </p>
+
+            <p class="category-info"><strong>Categoría:</strong> {{ selectedAlert.categoryName }}</p>
+
+            <div class="progress-container">
+                <p class="spending-info">
+                    ${{ selectedAlert.totalSpent }} gastados de ${{ selectedAlert.monthlyLimit }} permitidos
+                </p>
+                <div class="progress-bar">
+                    <div
+                            class="progress-fill"
+                            [style.width]="barWidth"
+                            [style.background-color]="getAlertColor(selectedAlert)"
+                    ></div>
+                </div>
+                <p class="percentage-info">
+                    {{ Math.min((selectedAlert.totalSpent / selectedAlert.monthlyLimit) * 100, 150).toFixed(1) }}% del límite
+                </p>
+            </div>
+
+            <div *ngIf="exceededAmount > 0" class="exceeded-warning">
+                <p class="exceeded-text">
+                    Has excedido tu límite por <strong>${{ exceededAmount }}</strong>
+                </p>
+                <div class="recommendations">
+                    <h4>Recomendaciones:</h4>
+                    <ul>
+                        <li>Revisa tus gastos recientes en esta categoría</li>
+                        <li>Considera ajustar tu presupuesto mensual</li>
+                        <li>Busca formas de reducir gastos en esta área</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button type="button" class="accept-button" (click)="goBack()">Aceptar</button>
+                <button type="button" class="dismiss-button" (click)="dismiss(selectedAlert)">Descartar Alerta</button>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="content">
+  <div class="weolcome-buttons">
+    <div class="metas-de-ahorro">Metas de Ahorro</div>
+  </div>
+  <div class="transactions-history">
+    <div class="frame-32">
+      <div class="lista-de-metas">Lista de Metas</div>
+      <div class="view-all nueva-meta-btn" (click)="onNewGoal()">
+        <div class="nueva-meta">Nueva Meta</div>
+        <img class="icons" src="/assets/icons/plus-circle.svg" />
+      </div>      
+    </div>
+    <div class="goals-container">
+      <div class="frame-239238" *ngFor="let goal of savingGoals" (click)="onViewContributions(goal)">
+        <div class="pc">
+          {{ goal.name }}
+          <span *ngIf="goal.currentAmount > 0" class="contribution-indicator" title="Esta meta tiene contribuciones">
+            💰
+          </span>
+        </div>
+        <img class="icons2" src="/assets/icons/settings.svg" (click)="onEdit(goal); $event.stopPropagation()" />
+        <img class="icons3" src="/assets/icons/x.png" (click)="onDelete(goal); $event.stopPropagation()" />
+        <div class="actual-0">Actual: {{ goal.currentAmount | currency:'USD' }}</div>
+        <div class="meta-550-10">Meta: {{ goal.targetAmount | currency:'USD' }}</div>
+        <div class="rectangle-6699">
+          <div
+            class="progress-bar"
+            [ngStyle]="{
+              width: (goal.currentAmount / goal.targetAmount) * 100 + '%'
+            }"
+          ></div>
+        </div>
+        
+        <div class="fecha-l-mite-05-02-2025">
+          Fecha Límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}
+        </div>
+        <div class="ltima-contribuci-n-300">
+          Última contribución: 
+          <span *ngIf="getLastContribution(goal.id); else noContributions">
+            {{ getLastContribution(goal.id).amount | currency:'USD' }} 
+          </span>
+          <ng-template #noContributions>
+            <span class="no-contributions-text">Sin contribuciones</span>
+          </ng-template>
+        </div>
+        <div class="frame-239239">
+          <div class="goal-status" 
+               [ngClass]="{
+                 'status-created': goal.currentAmount === 0,
+                 'status-in-progress': goal.currentAmount > 0 && goal.currentAmount < goal.targetAmount,
+                 'status-done': goal.currentAmount >= goal.targetAmount
+               }">
+            {{ goal.currentAmount === 0 ? 'CREATED' : 
+               goal.currentAmount >= goal.targetAmount ? 'DONE' : 'IN PROGRESS' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <router-outlet #o="outlet"></router-outlet>
+  
+</div>
+
+<div *ngIf="selectedGoal" class="edit-form-overlay">
+  <div class="edit-form-container">
+    <button (click)="selectedGoal = null" class="close-button">×</button>
+    <app-editgoal-form [goal]="selectedGoal" (closeForm)="onCloseEditForm()"></app-editgoal-form>
+  </div>
+</div>
+
+<!-- Modal de contribuciones -->
+<app-contributions-modal
+  [goal]="selectedGoalForContributions"
+  [isVisible]="showContributionsModal"
+  (closeModal)="onCloseContributionsModal()"
+  (contributionsDeleted)="onContributionsDeleted()">
+</app-contributions-modal>

@@ -1,0 +1,15 @@
+<div class="historial-list-container">
+  <h2>Historial de Contribuciones</h2>
+  <div class="content">
+    <p>Lista de contribuciones históricas</p>
+    <p>Estado del modal: {{ showModal ? 'Abierto' : 'Cerrado' }}</p>
+  </div>
+</div>
+
+<!-- Botón para abrir modal -->
+<div class="frame-40" (click)="openModal()" style="cursor: pointer;">
+  <img class="plus-icon" src="assets/icons/plus-circle.png" alt="Agregar categoría" />
+</div>
+
+<!-- Modal embebido -->
+<app-newcategory-form *ngIf="showModal" (close)="closeModal()"></app-newcategory-form>

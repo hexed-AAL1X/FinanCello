@@ -1,0 +1,130 @@
+<div class="movement-modal">
+  <form [formGroup]="movementForm" (ngSubmit)="submit()" class="form-container">
+    <div class="form-header">
+      <h2>New Movement</h2>
+      <img class="close-icon" src="assets/icons/x.png" [routerLink]="['/dashboard/finances']" />
+    </div>
+
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Amount</label>
+        <input type="number" formControlName="amount" placeholder="Enter amount" />
+      </div>
+
+      <div class="input-group">
+        <label>Date</label>
+        <input type="date" formControlName="date" />
+      </div>
+
+      <div class="input-group">
+        <label>Movement Type</label>
+        <div class="select-wrapper">
+          <select formControlName="movementType">
+            <option *ngFor="let type of movementTypes" [value]="type">{{ type }}</option>
+          </select>
+          <img src="assets/icons/down.svg" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Currency</label>
+        <div class="select-wrapper">
+          <select formControlName="currencyType">
+            <option *ngFor="let currency of currencyTypes" [value]="currency">{{ currency }}</option>
+          </select>
+          <img src="assets/icons/down.svg" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Category</label>
+        <div class="select-wrapper">
+          <select formControlName="categoryId">
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+          </select>
+          <img src="assets/icons/down.svg" />
+        </div>
+      </div>
+    </div>
+
+    <button class="submit-btn" type="submit" [disabled]="isProcessing">
+      {{ isProcessing ? 'Procesando...' : 'Aceptar' }}
+    </button>
+  </form>
+</div>
+
+<!-- Modal de Alerta de Límite -->
+<div class="limit-alert-modal" *ngIf="showLimitAlert && limitAlert">
+  <div class="alert-overlay"></div>
+  <div class="alert-content">
+    <div class="alert-header" [style.background-color]="getAlertColor()">
+      <h2>{{ getAlertIcon() }} ¡Límite de Gastos Excedido!</h2>
+    </div>
+    
+    <div class="alert-body">
+      <div class="alert-info">
+        <p><strong>Categoría:</strong> {{ limitAlert.categoryName }}</p>
+        <p><strong>Límite mensual:</strong> ${{ limitAlert.monthlyLimit }}</p>
+        <p><strong>Gastado actualmente:</strong> ${{ limitAlert.totalSpent }}</p>
+        <p><strong>Nuevo gasto:</strong> ${{ movementForm.get('amount')?.value }}</p>
+        <p><strong>Total después del gasto:</strong> ${{ newAmount }}</p>
+      </div>
+
+      <div class="progress-section">
+        <h4>Impacto en tu presupuesto:</h4>
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div 
+              class="progress-fill" 
+              [style.width]="getNewPercentage() + '%'"
+              [style.background-color]="getAlertColor()"
+            ></div>
+          </div>
+          <p class="percentage-text">{{ getNewPercentage().toFixed(1) }}% del límite</p>
+        </div>
+      </div>
+
+      <div class="exceeded-warning" *ngIf="getExceededAmount() > 0">
+        <p class="exceeded-text">
+          <strong>⚠️ Excederás tu límite por ${{ getExceededAmount() }}</strong>
+        </p>
+        <div class="recommendations">
+          <h4>Recomendaciones:</h4>
+          <ul>
+            <li>Considera reducir el monto del gasto</li>
+            <li>Revisa otros gastos en esta categoría</li>
+            <li>Evalúa si este gasto es realmente necesario</li>
+            <li>Considera ajustar tu presupuesto mensual</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert-severity" [ngClass]="getAlertSeverity()">
+        <span class="severity-icon">{{ getAlertIcon() }}</span>
+        <span class="severity-text">
+          {{ getAlertSeverity() === 'critical' ? 'CRÍTICO' : 
+             getAlertSeverity() === 'high' ? 'ALTO' : 
+             getAlertSeverity() === 'medium' ? 'MEDIO' : 'BAJO' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="alert-actions">
+      <button 
+        class="cancel-btn" 
+        (click)="onCancelLimit()"
+        [disabled]="isProcessing"
+      >
+        Cancelar
+      </button>
+      <button 
+        class="continue-btn" 
+        (click)="onContinueWithLimit()"
+        [disabled]="isProcessing"
+        [style.background-color]="getAlertColor()"
+      >
+        {{ isProcessing ? 'Procesando...' : 'Continuar de todos modos' }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,311 @@
+/* Modern Login Design - Matching Screenshots */
+@font-face {
+  font-family: "PalanquinDark-Bold";
+  src: url("/assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("/assets/fonts/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("/assets/fonts/Poppins-Medium.ttf") format("truetype");
+}
+
+/* Main Container */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a8d5d5 0%, #c2d8d8 50%, #dcdcd1 100%);
+  font-family: 'Poppins-Regular', sans-serif;
+}
+
+/* Logo Panel (Left) */
+.logo-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  max-width: 50%;
+}
+
+.logo-content {
+  background: linear-gradient(145deg, #0ea49b 0%, #092c36 100%);
+  border-radius: 24px;
+  padding: 80px 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Violin Icon with Arrow */
+.logo-icon {
+  position: relative;
+  margin-bottom: 40px;
+  width: 220px;
+  height: 220px;
+}
+
+.financello-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.25));
+}
+
+.violin {
+  width: 80px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.violin-body {
+  background: #4db8b0;
+  width: 60px;
+  height: 80px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  border: 3px solid #2a7a73;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.violin-neck {
+  background: #2a7a73;
+  width: 8px;
+  height: 30px;
+  position: absolute;
+  left: 36px;
+  top: 0;
+  border-radius: 4px;
+}
+
+.violin-strings {
+  position: absolute;
+  left: 38px;
+  top: 5px;
+  width: 4px;
+  height: 90px;
+}
+
+.violin-strings::before,
+.violin-strings::after {
+  content: '';
+  position: absolute;
+  background: #1a4a44;
+  width: 1px;
+  height: 100%;
+  left: 0;
+}
+
+.violin-strings::after {
+  left: 3px;
+}
+
+/* Growth Arrow */
+.growth-arrow {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 50px;
+  height: 50px;
+}
+
+.arrow-body {
+  background: #ff6b35;
+  width: 30px;
+  height: 6px;
+  position: absolute;
+  top: 22px;
+  left: 0;
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+
+.arrow-head {
+  width: 0;
+  height: 0;
+  border-left: 8px solid #ff6b35;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  position: absolute;
+  top: 16px;
+  right: 4px;
+  transform: rotate(45deg);
+}
+
+/* Logo Text */
+.logo-text {
+  color: #ffffff;
+  font-family: 'PalanquinDark-Bold', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+/* Form Panel (Right) */
+.form-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  max-width: 50%;
+}
+
+.form-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 60px 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-title {
+  color: #2c3e50;
+  font-family: 'PalanquinDark-Bold', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 40px 0;
+  text-align: center;
+}
+
+/* Login Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px 20px 16px 50px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Poppins-Regular', sans-serif;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0ea49b;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(14, 164, 155, 0.1);
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  pointer-events: none;
+}
+
+.form-input:focus + .input-icon {
+  color: #0ea49b;
+}
+
+/* Login Button */
+.login-button {
+  background: linear-gradient(135deg, #0ea49b 0%, #0b6862 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Poppins-Medium', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(14, 164, 155, 0.3);
+}
+
+.login-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0b8d82 0%, #0a5a55 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 164, 155, 0.4);
+}
+
+.login-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Form Links */
+.form-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #0ea49b;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+  
+  .logo-panel,
+  .form-panel {
+    max-width: 100%;
+    padding: 20px;
+  }
+  
+  .logo-content {
+    height: 300px;
+    padding: 40px 20px;
+  }
+  
+  .logo-text {
+    font-size: 24px;
+  }
+  
+  .form-title {
+    font-size: 24px;
+  }
+}

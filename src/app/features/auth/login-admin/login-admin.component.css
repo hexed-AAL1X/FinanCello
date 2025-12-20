@@ -1,0 +1,250 @@
+.login-admin,
+.login-admin * {
+  box-sizing: border-box;
+}
+.login-admin {
+  background: linear-gradient(
+    245.01deg,
+    rgba(122, 170, 170, 1) 0%,
+    rgba(220, 220, 209, 1) 100%
+  );
+  padding: 119px 59px 119px 59px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 1024px;
+  position: relative;
+}
+.content {
+  flex-shrink: 0;
+  width: 1292px;
+  height: 785px;
+  position: relative;
+}
+.login-glass {
+  width: 859px;
+  height: 555px;
+  position: absolute;
+  left: 433px;
+  top: 116px;
+  overflow: hidden;
+}
+.rectangle-27 {
+  background: rgba(217, 217, 217, 0.8);
+  width: 456px;
+  height: 456px;
+  position: absolute;
+  left: 382px;
+  top: 45px;
+}
+.rectangle-26 {
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 20px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.5);
+  border-width: 1px;
+  width: 785px;
+  height: 525px;
+  position: absolute;
+  left: 63px;
+  top: 14px;
+  box-shadow: inset -43.67px 43.67px 43.67px 0px rgba(255, 255, 255, 0.1),
+    inset 43.67px -43.67px 43.67px 0px rgba(165, 165, 165, 0.1);
+  backdrop-filter: blur(43.67px);
+}
+.login {
+  padding: 25px 31px 25px 31px;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+  align-items: center;
+  justify-content: center;
+  width: 435px;
+  position: absolute;
+  left: 392px;
+  top: 47px;
+  overflow: hidden;
+}
+.login-admin2 {
+  background: linear-gradient(
+    8.96deg,
+    rgba(122, 170, 170, 1) 0%,
+    rgba(9, 44, 54, 1) 99.98999834060669%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+}
+.group-208 {
+  flex-shrink: 0;
+  width: 371px;
+  height: 40px;
+  position: static;
+}
+.icons {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 381px;
+  top: 155px;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.line-2 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 365px;
+  height: 0px;
+  position: absolute;
+  left: 38px;
+  top: 177px;
+  transform-origin: 0 0;
+  transform: rotate(0.157deg) scale(1, 1);
+}
+.e-mail {
+  background: rgba(217, 217, 217, 0);
+  padding: 2px 6px 2px 6px;
+  width: 225px;
+  height: 40px;
+  position: absolute;
+  left: 32px;
+  top: 143px;
+}
+.e-mail2 {
+  color: #000000;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 6px;
+  top: 2px;
+}
+.group-209 {
+  flex-shrink: 0;
+  width: 371px;
+  height: 40px;
+  position: static;
+}
+.icons2 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 381px;
+  top: 241px;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.line-3 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px 0 0 0;
+  width: 365px;
+  height: 0px;
+  position: absolute;
+  left: 38px;
+  top: 263px;
+  transform-origin: 0 0;
+  transform: rotate(0.157deg) scale(1, 1);
+}
+.password {
+  background: rgba(217, 217, 217, 0);
+  padding: 2px 6px 2px 6px;
+  width: 225px;
+  height: 40px;
+  position: absolute;
+  left: 32px;
+  top: 229px;
+}
+.password2 {
+  color: #000000;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 6px;
+  top: 2px;
+}
+.button {
+  background: linear-gradient(
+    180deg,
+    rgba(14, 164, 155, 1) 0%,
+    rgba(5, 62, 59, 1) 100%
+  );
+  border-radius: 100px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 290px;
+  position: relative;
+}
+.text {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  width: 460px;
+}
+.group-210 {
+  flex-shrink: 0;
+  width: 369px;
+  height: 21px;
+  position: static;
+}
+.create-an-account {
+  color: #000000;
+  text-align: center;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 33px;
+  top: 415px;
+}
+.forgot-password {
+  color: #000000;
+  text-align: center;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 270px;
+  top: 415px;
+}
+.finacello-jpg {
+  background: linear-gradient(
+    44.41deg,
+    rgba(14, 164, 155, 1) 0%,
+    rgba(9, 44, 54, 1) 100%
+  );
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #dcdcd1;
+  border-width: 1px;
+  width: 785px;
+  height: 785px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  box-shadow: 14px 10px 5px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+  aspect-ratio: 1;
+}

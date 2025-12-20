@@ -1,0 +1,57 @@
+<div class="oasis-live-forever" (click)="onClose()">
+  <div class="frame-205" (click)="$event.stopPropagation()">
+    <img class="icons" src="assets/icons/x.png" alt="Cerrar" (click)="onClose()" />
+    <div class="new-category">New Category</div>
+    <div class="rectangle-328">
+      <div class="frame-68" (click)="focusName()">
+        <div class="e-mail">Name</div>
+        <input 
+          type="text" 
+          [(ngModel)]="categoryName" 
+          placeholder="Ingresa el nombre de la categoría"
+          class="category-input"
+          #nameInput
+        />
+      </div>
+      <div class="frame-67" (click)="focusDescription()">
+        <div class="e-mail">Description</div>
+        <textarea 
+          [(ngModel)]="categoryDescription" 
+          placeholder="Ingresa la descripción de la categoría"
+          class="category-textarea"
+          #descriptionInput
+        ></textarea>
+      </div>
+    </div>
+    <div class="button" (click)="saveCategory()">
+      <div class="text">Aceptar</div>
+    </div>
+    
+    <!-- Mensaje de éxito -->
+    <div *ngIf="showSuccess" class="succesful-record">
+      <img class="icons" src="assets/icons/check-circle.png" />
+      <div class="frame-65">
+        <div class="post-submitted">
+          Successful Record
+          <br />
+        </div>
+        <div class="check-back-later-for-updates">
+          The user was created correctly
+        </div>
+      </div>
+      <div class="undo">UNDO</div>
+      <div class="rectangle-326"></div>
+    </div>
+
+    <!-- Mensaje de error - Name Duplicated -->
+    <div *ngIf="showNameDuplicated" class="name-duplicated">
+      <img class="icons" src="assets/icons/alert-circle.png" />
+      <div class="frame-65">
+        <div class="post-submitted">Name Duplicated</div>
+        <div class="check-back-later-for-updates">Value Name must be unique</div>
+      </div>
+      <div class="undo">UNDO</div>
+      <div class="rectangle-326"></div>
+    </div>
+  </div>
+</div>

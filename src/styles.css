@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'aos/dist/aos.css';
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #0EA49B rgba(9, 44, 54, 0.12);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(9, 44, 54, 0.10);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0EA49B 0%, #0B6862 100%);
+  border-radius: 999px;
+  border: 3px solid rgba(9, 44, 54, 0.10);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #10bfb3 0%, #0B6862 100%);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}

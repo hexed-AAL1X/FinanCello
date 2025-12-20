@@ -1,0 +1,41 @@
+<div class="form-backdrop">
+  <div class="form-container">
+    <h2>Editar Meta de Ahorro</h2>
+
+    <form [formGroup]="goalForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="edit-goal-name">Nombre de la Meta</label>
+        <input
+          type="text"
+          id="edit-goal-name"
+          formControlName="name"
+          placeholder="Ej. Viaje a Japón"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="edit-amount">Monto Objetivo</label>
+        <input
+          type="number"
+          id="edit-amount"
+          formControlName="targetAmount"
+          placeholder="$0.00"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="edit-due-date">Fecha Límite</label>
+        <input
+          type="date"
+          id="edit-due-date"
+          formControlName="dueDate"
+        />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

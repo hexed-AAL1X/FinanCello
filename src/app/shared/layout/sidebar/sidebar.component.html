@@ -1,0 +1,133 @@
+<!-- Modern Sidebar Design -->
+<div class="sidebar" [class.collapsed]="isCollapsed" [class.mobile-open]="isMobileOpen">
+  <!-- Logo Section -->
+  <div class="sidebar-header">
+    <div class="logo-container">
+      <img class="logo-icon logo-anim" src="/assets/icons/favicon.png" alt="Financello" (click)="toggleSidebar()" />
+      <h1 class="logo-text">FINANCELLO</h1>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="sidebar-nav">
+    <!-- Main Navigation -->
+    <div class="nav-section">
+      <h3 class="nav-title">PRINCIPAL</h3>
+      <div class="nav-items">
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'home' }"
+          (click)="setActive('home')">
+          <div class="nav-icon">
+            <lucide-icon name="house" size="18" aria-label="Inicio"></lucide-icon>
+          </div>
+          <span class="nav-label">Inicio</span>
+        </button>
+
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'myfinances' }"
+          (click)="setActive('myfinances')">
+          <div class="nav-icon">
+            <lucide-icon name="wallet" size="18" aria-label="Mis Finanzas"></lucide-icon>
+          </div>
+          <span class="nav-label">Mis Finanzas</span>
+        </button>
+
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'loadfiles' }"
+          (click)="setActive('loadfiles')">
+          <div class="nav-icon">
+            <lucide-icon name="file" size="18" aria-label="Cargar Archivos"></lucide-icon>
+          </div>
+          <span class="nav-label">Cargar Archivos</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Financial Tools -->
+    <div class="nav-section">
+      <h3 class="nav-title">HERRAMIENTAS</h3>
+      <div class="nav-items">
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'savinggoals' }"
+          (click)="setActive('savinggoals')">
+          <div class="nav-icon">
+            <lucide-icon name="target" size="18" aria-label="Metas de Ahorro"></lucide-icon>
+          </div>
+          <span class="nav-label">Metas de Ahorro</span>
+        </button>
+
+
+
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'categories' }"
+          (click)="setActive('categories')">
+          <div class="nav-icon">
+            <lucide-icon name="chart-pie" size="18" aria-label="Categorías"></lucide-icon>
+          </div>
+          <span class="nav-label">Categorías</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Achievements Section -->
+    <div class="nav-section">
+      <h3 class="nav-title">LOGROS</h3>
+      <div class="nav-items">
+        <button 
+          class="nav-item achievements-item"
+          [ngClass]="{ 'active': activeSection === 'logros' }"
+          (click)="setActive('logros')">
+          <div class="nav-icon trophy-icon">
+            <lucide-icon name="trophy" size="18" aria-label="Logros"></lucide-icon>
+          </div>
+          <span class="nav-label">Logros</span>
+          <div class="achievement-badge">{{ achievementCount }}</div>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bottom Section -->
+  <div class="sidebar-footer">
+    <!-- User & Settings -->
+    <div class="nav-section">
+      <div class="nav-items">
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'profile' }"
+          (click)="setActive('profile')">
+          <div class="nav-icon">
+            <lucide-icon name="user" size="18" aria-label="Perfil"></lucide-icon>
+          </div>
+          <span class="nav-label">Perfil</span>
+        </button>
+
+        <button 
+          class="nav-item"
+          [ngClass]="{ 'active': activeSection === 'settings' }"
+          (click)="setActive('settings')">
+          <div class="nav-icon">
+            <lucide-icon name="settings" size="18" aria-label="Configuración"></lucide-icon>
+          </div>
+          <span class="nav-label">Configuración</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Special Admin Button -->
+    <div class="admin-section">
+      <button class="admin-button" (click)="getAdmin()">
+        <div class="admin-icon">
+          <lucide-icon name="star" size="18" aria-label="Obtener Admin"></lucide-icon>
+        </div>
+        <span class="admin-label">Obtener Admin</span>
+      </button>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,192 @@
+<div class="form-backdrop">
+  <div class="form-container">
+    <div class="header">
+      <h2>Gestión de Metas de Ahorro</h2>
+      <button class="btn-close" (click)="goBack()">×</button>
+    </div>
+
+    <!-- Tabs de navegación -->
+    <div class="tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'create'"
+        (click)="switchTab('create')">
+        Crear Meta
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'edit'"
+        (click)="switchTab('edit')">
+        Editar Meta
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeTab === 'delete'"
+        (click)="switchTab('delete')">
+        Eliminar Meta
+      </button>
+    </div>
+
+    <!-- Loading spinner -->
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Cargando...</p>
+    </div>
+
+    <!-- Error message -->
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+
+    <!-- Tab de Crear Meta -->
+    <div *ngIf="activeTab === 'create' && !loading" class="tab-content">
+      <h3>Crear Nueva Meta de Ahorro</h3>
+      <form (ngSubmit)="submitCreateForm()" #createForm="ngForm">
+        <div class="form-group">
+          <label for="create-name">Nombre de la Meta</label>
+          <input 
+            type="text" 
+            id="create-name" 
+            name="name"
+            [(ngModel)]="createGoal.name"
+            placeholder="Ej. Viaje a Japón"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="create-amount">Monto Objetivo</label>
+          <input 
+            type="number" 
+            id="create-amount" 
+            name="targetAmount"
+            [(ngModel)]="createGoal.targetAmount"
+            placeholder="$0.00"
+            min="0.01"
+            step="0.01"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="create-date">Fecha Límite</label>
+          <input 
+            type="date" 
+            id="create-date" 
+            name="dueDate"
+            [(ngModel)]="createGoal.dueDate"
+            required />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" [disabled]="loading">
+            Crear Meta
+          </button>
+          <button type="button" class="btn btn-cancel" (click)="goBack()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tab de Editar Meta -->
+    <div *ngIf="activeTab === 'edit' && !loading" class="tab-content">
+      <h3>Editar Meta de Ahorro</h3>
+      
+      <!-- Lista de metas para seleccionar -->
+      <div *ngIf="!selectedGoal" class="goals-list">
+        <h4>Selecciona una meta para editar:</h4>
+        <div *ngFor="let goal of savingGoals" class="goal-item" (click)="selectGoalToEdit(goal)">
+          <div class="goal-info">
+            <h5>{{ goal.name }}</h5>
+            <p>Objetivo: ${{ goal.targetAmount | number:'1.2-2' }}</p>
+            <p>Fecha límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="goal-actions">
+            <button class="btn btn-edit">Editar</button>
+          </div>
+        </div>
+        <div *ngIf="savingGoals.length === 0" class="no-goals">
+          <p>No hay metas de ahorro disponibles para editar.</p>
+        </div>
+      </div>
+
+      <!-- Formulario de edición -->
+      <div *ngIf="selectedGoal" class="edit-form">
+        <div class="selected-goal-info">
+          <h4>Editando: {{ selectedGoal.name }}</h4>
+        </div>
+        
+        <form (ngSubmit)="submitEditForm()" #editForm="ngForm">
+          <div class="form-group">
+            <label for="edit-name">Nombre de la Meta</label>
+            <input 
+              type="text" 
+              id="edit-name" 
+              name="name"
+              [(ngModel)]="editGoal.name"
+              placeholder="Ej. Viaje a Japón"
+              required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-amount">Monto Objetivo</label>
+            <input 
+              type="number" 
+              id="edit-amount" 
+              name="targetAmount"
+              [(ngModel)]="editGoal.targetAmount"
+              placeholder="$0.00"
+              min="0.01"
+              step="0.01"
+              required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-date">Fecha Límite</label>
+            <input 
+              type="date" 
+              id="edit-date" 
+              name="dueDate"
+              [(ngModel)]="editGoal.dueDate"
+              required />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" [disabled]="loading">
+              Guardar Cambios
+            </button>
+            <button type="button" class="btn btn-cancel" (click)="cancelEdit()">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tab de Eliminar Meta -->
+    <div *ngIf="activeTab === 'delete' && !loading" class="tab-content">
+      <h3>Eliminar Meta de Ahorro</h3>
+      <p class="warning-text">⚠️ Esta acción no se puede deshacer.</p>
+      
+      <div class="goals-list">
+        <div *ngFor="let goal of savingGoals" class="goal-item">
+          <div class="goal-info">
+            <h5>{{ goal.name }}</h5>
+            <p>Objetivo: ${{ goal.targetAmount | number:'1.2-2' }}</p>
+            <p>Fecha límite: {{ goal.dueDate | date:'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="goal-actions">
+            <button 
+              class="btn btn-delete" 
+              (click)="confirmDelete(goal)"
+              [disabled]="loading">
+              Eliminar
+            </button>
+          </div>
+        </div>
+        <div *ngIf="savingGoals.length === 0" class="no-goals">
+          <p>No hay metas de ahorro disponibles para eliminar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

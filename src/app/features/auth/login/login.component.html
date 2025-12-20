@@ -1,0 +1,55 @@
+<div class="login-container">
+  <!-- Left Panel - Logo FINANCELLO -->
+  <div class="logo-panel">
+    <div class="logo-content">
+      <!-- Violin with Arrow Icon -->
+      <div class="logo-icon">
+        <img class="financello-logo" src="/assets/img/financello.png" alt="FinanCello" />
+      </div>
+      <!-- FINANCELLO Text -->
+      <h1 class="logo-text">FINANCELLO</h1>
+    </div>
+  </div>
+
+  <!-- Right Panel - Login Form -->
+  <div class="form-panel">
+    <div class="form-content">
+      <h2 class="form-title">Login</h2>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="input-group">
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            required 
+            placeholder="E-mail"
+            class="form-input"
+          />
+          <span class="input-icon" aria-hidden="true">&#64;</span>
+        </div>
+        
+        <div class="input-group">
+          <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            required 
+            placeholder="Password"
+            class="form-input"
+          />
+          <span class="input-icon" aria-hidden="true">*</span>
+        </div>
+        
+        <button type="submit" class="login-button" [disabled]="isLoading">
+          {{ isLoading ? 'Logging in...' : 'Login' }}
+        </button>
+      </form>
+      
+      <div class="form-links">
+        <a (click)="goToSignup()" class="link">Create an account</a>
+        <a class="link">Forgot password?</a>
+      </div>
+    </div>
+  </div>
+</div>

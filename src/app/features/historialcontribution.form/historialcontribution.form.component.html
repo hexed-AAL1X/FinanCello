@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="frame-33">
+      <div class="button">
+        <div class="text"></div>
+      </div>
+      <div class="clasificaci-n-de-las-transacciones-de-gastos">
+        Clasificación de las transacciones de gastos
+      </div>
+    </div>
+    <div class="transactions-history">
+      <div class="frame-32">
+        <div class="clasifica-autom-ticamente-tus-gastos-por-categor-a">
+          Clasifica automáticamente tus gastos por categoría.
+        </div>
+      </div>
+      
+      <div class="category-expenses">
+        <ng-container *ngFor="let categoria of categorias; let i = index">
+          <div class="frame-extra" (click)="onCategoriaClick(categoria, i)" [class.selected]="selectedCategoriaIndex === i">
+            <div class="extra-categor-a">{{ categoria.name }}</div>
+          </div>
+        </ng-container>
+        <div class="frame-40" (click)="goToNewCategory()" style="cursor: pointer">
+          <img class="plus-icon" src="assets/icons/plus-circle.png" alt="Agregar categoría" />
+        </div>
+      </div>
+
+      <!-- NUEVO: Mostrar detalles de la categoría seleccionada -->
+      <div *ngIf="selectedCategoriaIndex !== null && categorias[selectedCategoriaIndex]" class="categoria-detalle">
+        <h3>{{ categorias[selectedCategoriaIndex].name }}</h3>
+        <p>{{ categoriaDescripciones[selectedCategoriaIndex] }}</p>
+        <table *ngIf="movimientosPorCategoria[selectedCategoriaIndex].length > 0">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Descripción</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let mov of movimientosPorCategoria[selectedCategoriaIndex]">
+              <td>{{ mov.fecha }}</td>
+              <td>{{ mov.descripcion }}</td>
+              <td>{{ mov.monto }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="movimientosPorCategoria[selectedCategoriaIndex].length === 0">
+          Sin movimientos
+        </div>
+      </div>
+    </div>
+
+    <div class="frame-35">
+      <div class="rectangle-7"></div>
+      <div class="nuevo-gasto-detectado-y-clasificado-como-gasto-primario">
+        Nuevo gasto detectado y clasificado en nuestras categorías.
+      </div>
+      <img class="vector" src="assets/icons/info.png" />
+    </div>
+  </div>
+  
+  <!-- Modal embebido -->
+  <app-newcategory-form *ngIf="showModal" (close)="closeModal()" (categoryCreated)="addCategory($event.name, $event.description)"></app-newcategory-form>
+  

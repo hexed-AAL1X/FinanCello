@@ -1,0 +1,92 @@
+<div class="nirvana-sappy">
+    <div class="rectangle-329">
+
+        <!-- botón cerrar y título -->
+        <img class="icons" src="assets/icons/x.png" [routerLink]="['/dashboard']" alt="Cerrar" />
+        <div class="new-movement">Límite de gasto</div>
+
+        <!-- ─── MODO CREAR ─────────────────────────────────── -->
+        <ng-container *ngIf="mode === 'create'">
+            <form [formGroup]="limitForm" (ngSubmit)="onSubmit()">
+                <!-- Categoria + Monto -->
+                <div class="frame-226">
+                    <!-- Categoría -->
+                    <div class="input-group">
+                        <label class="label">Categoría</label>
+                        <div class="select-container">
+                            <select formControlName="categoryId" class="rectangle-331">
+                                <option value="" disabled>-- Selecciona categoría --</option>
+                                <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
+                            </select>
+                            <img class="chevron-icon" src="assets/icons/down.svg" alt="▼" />
+                        </div>
+                    </div>
+                    <!-- Monto -->
+                    <div class="input-group">
+                        <label class="label">Monto límite</label>
+                        <input
+                                type="number"
+                                formControlName="monthlyLimit"
+                                class="rectangle-333"
+                                placeholder="Ingresa monto"
+                        />
+                    </div>
+                </div>
+
+                <!-- Botones Aceptar y modos -->
+                <button class="button accept-btn" type="submit">
+                    <div class="text">Aceptar</div>
+                </button>
+                <div class="action-buttons">
+                    <button type="button" class="button small-btn" (click)="enterDelete()">
+                        <div class="text">Eliminar</div>
+                    </button>
+                    <button type="button" class="button small-btn" (click)="list()">
+                        <div class="text">Listar</div>
+                    </button>
+                </div>
+            </form>
+        </ng-container>
+
+        <!-- ─── MODO LISTAR ─────────────────────────────────── -->
+        <ng-container *ngIf="mode === 'list'">
+            <h3>Mis Límites Actuales</h3>
+            <ul>
+                <li *ngFor="let lim of limits">
+                    Categoría: {{ lim.categoryName }} — Límite: {{ lim.monthlyLimit }}
+                </li>
+            </ul>
+            <p *ngIf="limits.length === 0">No tienes límites configurados.</p>
+            <div class="action-buttons">
+                <button type="button" class="button small-btn" (click)="backToCreate()">
+                    <div class="text">Volver</div>
+                </button>
+            </div>
+        </ng-container>
+
+        <!-- ─── MODO ELIMINAR ───────────────────────────────── -->
+        <ng-container *ngIf="mode === 'delete'">
+            <h3>Eliminar Límite</h3>
+            <!-- Solo categoría -->
+            <div class="input-group">
+                <label class="label">Categoría</label>
+                <div class="select-container">
+                    <select formControlName="categoryId" class="rectangle-331">
+                        <option value="" disabled>-- Selecciona categoría --</option>
+                        <option *ngFor="let c of categories" [ngValue]="c.id">{{ c.name }}</option>
+                    </select>
+                    <img class="chevron-icon" src="assets/icons/down.svg" alt="▼" />
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button type="button" class="button small-btn" (click)="deleteSelectedLimit()">
+                    <div class="text">Eliminar</div>
+                </button>
+                <button type="button" class="button small-btn" (click)="backToCreate()">
+                    <div class="text">Volver</div>
+                </button>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<app-header (sidebarToggle)="toggleSidebar()"></app-header>
+<div class="dashboard-layout">
+  <app-sidebar [ngClass]="{ 'sidebar-hidden': isSidebarHidden }"></app-sidebar>
+  <div class="content-area" [ngClass]="{ 'sidebar-collapsed': isSidebarHidden }">
+    <router-outlet></router-outlet>
+  </div>
+</div> 

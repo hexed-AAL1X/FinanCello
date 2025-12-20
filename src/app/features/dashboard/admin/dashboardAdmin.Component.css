@@ -1,0 +1,907 @@
+.content,
+.content * {
+  box-sizing: border-box;
+}
+.content {
+  background: #dcdcd1;
+  border-radius: 0px 0px 0px 15px;
+  height: 944px;
+  position: relative;
+  overflow: hidden;
+}
+.weolcome-buttons {
+  width: 1121px;
+  height: 53px;
+  position: absolute;
+  left: 36px;
+  top: 17px;
+}
+.user-list {
+  color: #092c36;
+  text-align: left;
+  font-family: "PalanquinDark-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 386px;
+  height: 33px;
+}
+.all-tickets {
+  border-radius: 15px;
+  padding: 24px 1px 24px 1px;
+  height: 852px;
+  position: absolute;
+  right: 501px;
+  left: 20px;
+  top: 70px;
+  overflow: hidden;
+}
+.cards-default {
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+}
+.sheet {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+}
+.all-users {
+  color: var(--grayscale-black, #252733);
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 19px;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  position: absolute;
+  left: 1px;
+  top: 24px;
+  width: 400px;
+}
+.sort {
+  position: absolute;
+  inset: 0;
+}
+.sort2 {
+  color: var(--grayscale-gray-dark, #4b506d);
+  text-align: left;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  position: absolute;
+  right: 370.5px;
+  top: 24px;
+}
+.icon-sort {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 408.5px;
+  top: 25px;
+  overflow: visible;
+}
+.filter {
+  position: absolute;
+  inset: 0;
+}
+.filter2 {
+  color: var(--grayscale-gray-dark, #4b506d);
+  text-align: left;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  position: absolute;
+  right: 16.25px;
+  top: 24px;
+}
+.icon-filter {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 60.25px;
+  top: 25px;
+  overflow: visible;
+}
+.table-top {
+  width: 1120px;
+  height: 30px;
+  position: absolute;
+  left: 17px;
+  top: 89px;
+}
+.users-details {
+  color: #475367;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  position: absolute;
+  right: 649px;
+  left: 31px;
+  top: 0px;
+}
+.customer-name {
+  color: #475367;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  position: absolute;
+  right: 401px;
+  top: 0px;
+  width: 208px;
+}
+.role {
+  color: #475367;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  position: absolute;
+  right: 77px;
+  top: 0px;
+  width: 104px;
+}
+.date {
+  color: #475367;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  position: absolute;
+  right: 221px;
+  top: 0px;
+  width: 140px;
+}
+.divider-line-horizontal {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 30px;
+  overflow: visible;
+}
+.frame-239184 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 1120px;
+  position: absolute;
+  left: 17px;
+  top: 118.73px;
+}
+.table-ticket-priority-high {
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 92px;
+  position: relative;
+}
+.content2 {
+  position: absolute;
+  inset: 0;
+}
+.icon-more-vertical {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.group-239186 {
+  width: 76px;
+  height: 24px;
+  position: static;
+}
+.sheet2 {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+}
+.title {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: absolute;
+  right: 117px;
+  left: 951px;
+  top: 50%;
+  translate: 0 -50%;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-label {
+  color: #475367;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  position: absolute;
+  right: 221px;
+  top: calc(50% - -4px);
+  width: 140px;
+  height: 16px;
+}
+.date-label {
+  color: var(--grayscale-black, #252733);
+  text-align: left;
+  font-family: "DmSans-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  position: absolute;
+  right: 221px;
+  top: calc(50% - 20px);
+  width: 140px;
+}
+.date-customer {
+  color: #475367;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  position: absolute;
+  right: 401px;
+  top: calc(50% - -4px);
+  width: 208px;
+  height: 16px;
+}
+.customer-name2 {
+  color: var(--grayscale-black, #252733);
+  text-align: left;
+  font-family: "DmSans-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  position: absolute;
+  right: 401px;
+  top: calc(50% - 20px);
+  width: 208px;
+}
+.ticket-information {
+  color: #475367;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  position: absolute;
+  right: 649px;
+  left: 99px;
+  top: calc(50% - -4px);
+  height: 16px;
+}
+.ticket-name {
+  color: var(--grayscale-black, #252733);
+  text-align: left;
+  font-family: "DmSans-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  position: absolute;
+  right: 649px;
+  left: 99px;
+  top: calc(50% - 20px);
+}
+.avatar-man-5 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.divider-line-horizontal2 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+.divider-line-horizontal3 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.table-ticket-priority-low {
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 92px;
+  position: relative;
+}
+.icon-more-vertical2 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.sheet3 {
+  background: #fec400;
+  border-radius: 100px;
+  position: absolute;
+  right: 105px;
+  left: 939px;
+  bottom: 34px;
+  top: 34px;
+}
+.avatar-woman-5 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.divider-line-horizontal4 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+.divider-line-horizontal5 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.icon-more-vertical3 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.avatar-woman-3 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.divider-line-horizontal6 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+.divider-line-horizontal7 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.table-ticket-priority-normal {
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 92px;
+  position: relative;
+}
+.icon-more-vertical4 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.chip-priority-normal {
+  width: 76px;
+  height: 24px;
+  position: absolute;
+  right: 105px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: hidden;
+}
+.group-2391862 {
+  position: absolute;
+  inset: 0;
+}
+.sheet4 {
+  background: var(--green-default, #29cc97);
+  border-radius: 100px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+}
+.title2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: absolute;
+  right: 12px;
+  left: 12px;
+  top: 50%;
+  translate: 0 -50%;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.customer-name3 {
+  color: var(--grayscale-black, #252733);
+  text-align: left;
+  font-family: "DmSans-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  position: absolute;
+  right: 401px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 208px;
+}
+.avatar-man-7 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.divider-line-horizontal8 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+.divider-line-horizontal9 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.table-ticket-priority-high-hover {
+  background: rgba(255, 255, 255, 0);
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 92px;
+  position: relative;
+}
+.icon-more-vertical5 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.avatar-man-6 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 24px;
+  overflow: visible;
+}
+.divider-line-horizontal10 {
+  width: 1120px;
+  height: 0px;
+  position: absolute;
+  left: 0px;
+  top: 92px;
+  overflow: visible;
+}
+.divider-line-horizontal11 {
+  width: 1120px;
+  height: 0px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.icon-more-vertical6 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.avatar-man-4 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.divider-line-horizontal12 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+.divider-line-horizontal13 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.icon-more-vertical7 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.avatar-woman-6 {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  left: 31px;
+  top: 50%;
+  translate: 0 -50%;
+  overflow: visible;
+}
+.divider-line-horizontal14 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow: visible;
+}
+.divider-line-horizontal15 {
+  height: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.table-bottom {
+  position: absolute;
+  inset: 0;
+}
+.rows-per-page {
+  width: 139px;
+  height: 18px;
+  position: static;
+}
+.rows-per-page2 {
+  color: #475367;
+  text-align: left;
+  font-family: var(--regular-14px-font-family, "Mulish-Regular", sans-serif);
+  font-size: var(--regular-14px-font-size, 14px);
+  line-height: var(--regular-14px-line-height, 20px);
+  letter-spacing: var(--regular-14px-letter-spacing, 0.3px);
+  font-weight: var(--regular-14px-font-weight, 400);
+  position: absolute;
+  right: 317px;
+  top: 807px;
+  width: 106px;
+  height: 18px;
+}
+._8 {
+  color: var(--grayscale-gray-dark, #4b506d);
+  text-align: right;
+  font-family: var(--regular-14px-font-family, "Mulish-Regular", sans-serif);
+  font-size: var(--regular-14px-font-size, 14px);
+  line-height: var(--regular-14px-line-height, 20px);
+  letter-spacing: var(--regular-14px-letter-spacing, 0.3px);
+  font-weight: var(--regular-14px-font-weight, 400);
+  position: absolute;
+  right: 299px;
+  top: 807px;
+  width: 10px;
+  height: 18px;
+}
+.icon-dropdown {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 284px;
+  top: 810px;
+  overflow: visible;
+}
+.pagination {
+  width: 184px;
+  height: 24px;
+  position: static;
+}
+._1-8-of-1240 {
+  color: #475367;
+  text-align: right;
+  font-family: var(--regular-14px-font-family, "Mulish-Regular", sans-serif);
+  font-size: var(--regular-14px-font-size, 14px);
+  line-height: var(--regular-14px-line-height, 20px);
+  letter-spacing: var(--regular-14px-letter-spacing, 0.3px);
+  font-weight: var(--regular-14px-font-weight, 400);
+  position: absolute;
+  right: 136px;
+  top: 807px;
+  width: 100px;
+  height: 18px;
+}
+.icon-arrow-left {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 88px;
+  top: 804px;
+  overflow: visible;
+}
+.icon-arrow-right {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 52px;
+  top: 804px;
+  overflow: visible;
+}
+
+/* Loading and Error States */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #666;
+  font-family: "DmSans-Regular", sans-serif;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0ea49b;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-state {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff0000;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px;
+  color: #ff0000;
+  font-family: "DmSans-Regular", sans-serif;
+  text-align: center;
+}
+
+/* Controls Section */
+.controls-section {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+.search-control {
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #bababa;
+  border-radius: 6px;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #0ea49b;
+  box-shadow: 0 0 0 2px rgba(14, 164, 155, 0.2);
+}
+
+.filter-control {
+  min-width: 150px;
+}
+
+.role-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #bababa;
+  border-radius: 6px;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.role-select:focus {
+  border-color: #0ea49b;
+  box-shadow: 0 0 0 2px rgba(14, 164, 155, 0.2);
+}
+
+.clear-filters-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clear-filters-btn:hover {
+  background: #d32f2f;
+}
+
+/* User Role Classes */
+.admin-role .sheet2 {
+  background: #ff5722;
+}
+
+.basic-role .sheet2 {
+  background: #4caf50;
+}
+
+/* Avatar with Initials */
+.avatar-man-5 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea49b, #05623b);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Pagination Controls */
+.items-per-page-select {
+  padding: 4px 8px;
+  border: 1px solid #bababa;
+  border-radius: 4px;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 12px;
+  outline: none;
+  background: white;
+}
+
+.icon-arrow-left.disabled,
+.icon-arrow-right.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-arrow-left:not(.disabled),
+.icon-arrow-right:not(.disabled) {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.icon-arrow-left:not(.disabled):hover,
+.icon-arrow-right:not(.disabled):hover {
+  opacity: 0.7;
+}
+
+/* Sort Indicators */
+.customer-name,
+.role,
+.sort2 {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.customer-name:hover,
+.role:hover,
+.sort2:hover {
+  color: #0ea49b;
+}
+
+/* Table Row Hover */
+.table-ticket-priority-high:hover {
+  background: rgba(14, 164, 155, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .controls-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-control,
+  .filter-control {
+    max-width: none;
+  }
+}

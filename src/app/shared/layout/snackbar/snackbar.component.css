@@ -1,0 +1,131 @@
+.snackbar,
+.snackbar * {
+  box-sizing: border-box;
+}
+.snackbar {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 340px;
+  background: #092c36;
+  border-radius: 5px;
+  padding: 26px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  overflow: hidden;
+  z-index: 3001;
+  animation: slideIn 0.4s ease forwards;
+  transition: opacity 0.3s ease;
+}
+.snackbar.hide {
+  animation: slideOut 0.4s ease-in-out forwards;
+}
+.snackbar.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.content {
+  flex-shrink: 0;
+  width: 340px;
+  height: 71.5px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.icons {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 10px;
+  top: 28px;
+  overflow: visible;
+}
+.frame-65 {
+  width: 219px;
+  height: 63px;
+  position: absolute;
+  left: 49px;
+  top: 8.5px;
+}
+.post-submitted {
+  color: #fafafa;
+  text-align: left;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 0px;
+  top: 5.5px;
+  width: 234px;
+}
+.check-back-later-for-updates {
+  color: #fafafa;
+  text-align: left;
+  font-family: "DmSans-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 37.5px;
+  width: 219px;
+}
+.undo {
+  color: #0ea49b;
+  text-align: left;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  left: 283px;
+  top: 28px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.undo:hover {
+  color: #1fd3c7;
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+.undo:active {
+  transform: scale(0.95);
+}
+.rectangle-326 {
+  background: #0ea49b;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: fillBar 3s linear forwards;
+}
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

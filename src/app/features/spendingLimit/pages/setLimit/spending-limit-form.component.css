@@ -1,0 +1,174 @@
+/* ----------------------------------------------------------
+   CAJA EXTERNA
+----------------------------------------------------------- */
+.nirvana-sappy,
+.nirvana-sappy * {
+  box-sizing: border-box;
+}
+
+.nirvana-sappy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #DCDCD1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----------------------------------------------------------
+   CONTENEDOR BLANCO
+----------------------------------------------------------- */
+.rectangle-329 {
+  position: relative;
+  background: #ffffff;
+  border-radius: 35px;
+  width: 738px;
+  height: 520px;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* ----------------------------------------------------------
+   ICONO CERRAR
+----------------------------------------------------------- */
+.icons {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   TÍTULO
+----------------------------------------------------------- */
+.new-movement {
+  color: #000;
+  font-family: "PalanquinDark-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ----------------------------------------------------------
+   FORMULARIO (CREAR / ACTUALIZAR)
+----------------------------------------------------------- */
+.frame-226 {
+  border-radius: 15px;
+  border: 1px solid #bababa;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 32px;
+  background: #fff;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 90%;
+  max-width: 225px;
+}
+
+.label {
+  color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Select básico */
+.rectangle-331 {
+  background: #0e0000;
+  border-radius: 15px;
+  opacity: 0.2;
+  width: 225px;
+  height: 40px;
+  position: relative;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* Input numérico */
+.rectangle-333 {
+  background-color: rgba(9, 44, 54, 0.2);
+  border: none;
+  border-radius: 15px;
+  width: 225px;
+  height: 40px;
+  padding: 0 8px;
+  color: #000;
+}
+
+/* ----------------------------------------------------------
+   BOTÓN ACEPTAR
+----------------------------------------------------------- */
+.button {
+  background: #0ea49b;
+  border-radius: 100px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  cursor: pointer;
+}
+
+.text {
+  color: #000;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button.accept-btn {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   BOTONES ELIMINAR / LISTAR
+----------------------------------------------------------- */
+.action-buttons {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+}
+
+.button.small-btn {
+  width: 140px;
+  padding: 10px 0;
+  position: static;
+  margin: 0;
+}

@@ -1,0 +1,89 @@
+.title-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.limit-title {
+  font-size: 24px;
+  color: #092C36;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #7AAAAA;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+select, input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #0B6862;
+  background-color: #DCDCD1;
+  color: #092C36;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="button"] {
+  background-color: #DCDCD1;
+  color: #000000;
+}
+
+button[type="submit"] {
+  background-color: #0B6862;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.results-container {
+  margin-top: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.movement-card {
+  background-color: #DCDCD1;
+  border: 1px solid #0B6862;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  color: #092C36;
+}
+
+:host {
+  display: block;
+  background-color: #DCDCD1;
+  min-height: 100vh;
+  padding: 40px 0;
+}

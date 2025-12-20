@@ -1,0 +1,170 @@
+<div class="transaction-history-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="header-content">
+      <h1 class="page-title">My Transactions</h1>
+      <div class="header-actions">
+        <div class="dropdown-container">
+          <button class="action-btn sort-btn" (click)="toggleSortMenu()">
+            <img src="/assets/icons/dots-vertical.svg" alt="Sort" />
+            <span>{{ getSortButtonText() }}</span>
+          </button>
+          <div class="dropdown-menu sort-menu" *ngIf="showSortMenu">
+            <button class="dropdown-item" (click)="sortByAmount('asc')">
+              <span>Low to High</span>
+            </button>
+            <button class="dropdown-item" (click)="sortByAmount('desc')">
+              <span>High to Low</span>
+            </button>
+            <button class="dropdown-item" (click)="sortByAmount(null)">
+              <span>Clear Sort</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="dropdown-container">
+          <button class="action-btn filter-btn" (click)="toggleFilterMenu()">
+            <img src="/assets/icons/dots-vertical.svg" alt="Filter" />
+            <span>{{ getFilterButtonText() }}</span>
+          </button>
+          <div class="dropdown-menu filter-menu" *ngIf="showFilterMenu">
+            <div class="filter-section">
+              <h4>Transaction Type</h4>
+              <button class="dropdown-item" (click)="filterByType('all')">
+                <span>All</span>
+              </button>
+              <button class="dropdown-item" (click)="filterByType('income')">
+                <span>Income</span>
+              </button>
+              <button class="dropdown-item" (click)="filterByType('expense')">
+                <span>Expense</span>
+              </button>
+            </div>
+            <div class="filter-section">
+              <h4>Category</h4>
+              <button class="dropdown-item" (click)="filterByCategory('all')">
+                <span>All Categories</span>
+              </button>
+              <button class="dropdown-item" *ngFor="let category of availableCategories" (click)="filterByCategory(category)">
+                <span>{{ category }}</span>
+              </button>
+            </div>
+            <div class="filter-section">
+              <button class="dropdown-item clear-filters" (click)="clearFilters()">
+                <span>Clear All Filters</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button class="action-btn export-btn" (click)="exportToPdf()">
+          <img src="/assets/icons/file.svg" alt="Export" />
+          <span>Export PDF</span>
+        </button>
+
+        <button class="action-btn test-data-btn" (click)="loadTestData()">
+          <img src="/assets/icons/file-plus.png" alt="Test Data" />
+          <span>Load Test Data</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="transactions-card">
+      <div class="card-header">
+        <h2 class="card-title">All Transactions</h2>
+      </div>
+
+      <!-- Table Header -->
+      <div class="table-header">
+        <div class="table-row header-row">
+          <div class="col-details">Transaction Details</div>
+          <div class="col-category">Category</div>
+          <div class="col-amount">Amount</div>
+          <div class="col-date">Date</div>
+          <div class="col-actions"></div>
+        </div>
+      </div>
+
+      <!-- Table Body -->
+      <div class="table-body">
+        <!-- Loading State -->
+        <div class="loading-state" *ngIf="isLoading">
+          <div class="loading-spinner"></div>
+          <p>Cargando transacciones...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-state" *ngIf="errorMessage && !isLoading">
+          <p class="error-message">{{ errorMessage }}</p>
+          <button class="retry-btn" (click)="loadTransactions()">Reintentar</button>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" *ngIf="!isLoading && !errorMessage && allTransactions.length === 0">
+          <p>No hay transacciones para mostrar</p>
+        </div>
+
+        <!-- Transactions List -->
+        <div class="table-row transaction-row" *ngFor="let transaction of displayedTransactions; trackBy: trackByTransaction">
+          <div class="col-details">
+            <div class="transaction-info">
+              <img class="transaction-icon" [src]="transaction.icon || '/assets/icons/piggy-bank.png'" [alt]="transaction.category" />
+              <div class="transaction-details">
+                <div class="transaction-name">{{ transaction.name }}</div>
+                <div class="transaction-meta">{{ transaction.meta }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-category">
+            <div class="category-info">
+              <div class="category-name">{{ transaction.category }}</div>
+              <div class="category-goal" *ngIf="transaction.goal">{{ transaction.goal }}</div>
+            </div>
+          </div>
+          <div class="col-amount">
+            <div class="amount-chip" [class.income]="transaction.type === 'income'" [class.expense]="transaction.type === 'expense'">
+              {{ transaction.amount | currency }}
+            </div>
+          </div>
+          <div class="col-date">
+            <div class="date-info">
+              <div class="date-main">{{ transaction.date | date:'MMM dd, yyyy' }}</div>
+              <div class="date-time">{{ transaction.time }}</div>
+            </div>
+          </div>
+          <div class="col-actions">
+            <button class="action-menu-btn">
+              <img src="/assets/icons/dots-vertical.svg" alt="More" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-section">
+        <div class="pagination-info">
+          <span>Rows per page:</span>
+          <select class="rows-select" (change)="onPageSizeChange($event)" [value]="pageSize">
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="32">32</option>
+          </select>
+        </div>
+        <div class="pagination-controls">
+          <span class="pagination-text">{{ getPaginationInfo() }}</span>
+          <div class="pagination-buttons">
+            <button class="pagination-btn" [disabled]="currentPage === 1" (click)="goToPreviousPage()">
+              <img src="/assets/icons/caret-left.png" alt="Previous" />
+            </button>
+            <button class="pagination-btn" [disabled]="currentPage >= totalPages" (click)="goToNextPage()">
+              <img src="/assets/icons/caret-right.png" alt="Next" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

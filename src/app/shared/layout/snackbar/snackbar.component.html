@@ -1,0 +1,11 @@
+<div class="snackbar" [class.hide]="isHiding" [class.hidden]="!visible">
+  <div class="content">
+    <img class="icons" [src]="icon" *ngIf="icon" />
+    <div class="frame-65">
+      <div class="post-submitted">{{ title }}</div>
+      <div class="check-back-later-for-updates">{{ message }}</div>
+    </div>
+    <div class="undo" (click)="onUndoSnackbar()" *ngIf="showUndo">UNDO</div>
+    <div class="rectangle-326"></div>
+  </div>
+</div>

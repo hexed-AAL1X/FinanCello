@@ -1,0 +1,59 @@
+<div class="title-container">
+  <h2 class="limit-title">Filtrar movimientos</h2>
+</div>
+
+<div class="form-container">
+  <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="categoryName">Categoría</label>
+      <select id="categoryName" formControlName="categoryName">
+        <option value="">-- Selecciona una categoría --</option>
+        <option *ngFor="let category of categories" [value]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="movementType">Tipo de movimiento</label>
+      <select id="movementType" formControlName="movementType">
+        <option value="">-- Selecciona un tipo --</option>
+        <option value="INCOME">Ingreso</option>
+        <option value="EXPENSE">Gasto</option>
+      </select>
+    </div>
+
+    <div class="button-group">
+      <button type="button" (click)="onCancel()">Cancelar</button>
+      <button type="submit">Buscar</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="submitted && results.length > 0" class="results-container">
+  <h3>Resultados:</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Monto</th>
+      <th>Tipo</th>
+      <th>Categoría</th>
+      <th>Moneda</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let movement of results">
+      <td>{{ movement.date }}</td>
+      <td>{{ movement.amount }}</td>
+      <td>{{ movement.movementType }}</td>
+      <td>{{ movement.categoryResponse.name }}</td>
+      <td>{{ movement.currencyType }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="submitted && results.length === 0" class="no-results">
+  <p>No se encontraron movimientos con los filtros seleccionados.</p>
+</div>

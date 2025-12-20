@@ -1,0 +1,102 @@
+.form-backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .form-container {
+    background: #ffffff;
+    border: 2px solid #f15b64;
+    border-radius: 20px;
+    padding: 40px 50px;
+    width: 480px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: pop 0.3s ease-out;
+  }
+  
+  @keyframes pop {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .form-container h2 {
+    margin-bottom: 25px;
+    font-family: "PalanquinDark-Bold", sans-serif;
+    font-size: 28px;
+    color: #222;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-family: "Poppins-Medium", sans-serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  input {
+    font-size: 15px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: "Poppins-Regular", sans-serif;
+    transition: all 0.2s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #0ea49b;
+    box-shadow: 0 0 5px #0ea49b88;
+  }
+  
+  .form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  
+  .btn {
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: "Poppins-Medium", sans-serif;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary {
+    background-color: #0ea49b;
+    color: white;
+  }
+  
+  .btn-cancel {
+    background-color: #bababa;
+    color: #222;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  
+  .btn:active {
+    transform: scale(0.97);
+  }
+  

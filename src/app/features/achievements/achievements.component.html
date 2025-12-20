@@ -1,0 +1,197 @@
+<div class="achievements-container">
+  <!-- Header Section -->
+  <div class="achievements-header">
+    <div class="header-content">
+      <div class="header-info">
+        <h1 class="page-title">🏆 Logros y Conquistas</h1>
+        <p class="page-subtitle">Celebra tus éxitos financieros y mantén la motivación</p>
+      </div>
+      <div class="header-stats">
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <div class="stat-value">{{ unlockedCount }}</div>
+            <div class="stat-label">Desbloqueados</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-info">
+            <div class="stat-value">{{ progressPercentage }}%</div>
+            <div class="stat-label">Progreso</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-info">
+            <div class="stat-value">{{ totalPoints }}</div>
+            <div class="stat-label">Puntos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="achievements-content">
+          <!-- Action Bar -->
+      <div class="action-bar">
+        <button class="action-btn primary" (click)="checkAchievements()" [disabled]="isLoading">
+          <lucide-icon name="refresh-cw" size="16" aria-label="Refrescar" *ngIf="!isLoading"></lucide-icon>
+          <div class="loading-spinner-small" *ngIf="isLoading"></div>
+          <span>{{ isLoading ? 'Verificando...' : 'Verificar Logros' }}</span>
+        </button>
+        <button class="action-btn secondary" (click)="abrirModal()">
+          <lucide-icon name="trophy" size="16" aria-label="Ver Todos"></lucide-icon>
+          <span>Ver Todos</span>
+        </button>
+      </div>
+
+    <!-- Categories Tabs -->
+    <div class="categories-tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="selectedCategory === 'all'"
+        (click)="selectCategory('all')">
+        <span class="tab-icon">🏆</span>
+        <span class="tab-label">Todos</span>
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="selectedCategory === 'savings'"
+        (click)="selectCategory('savings')">
+        <span class="tab-icon">💰</span>
+        <span class="tab-label">Ahorros</span>
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="selectedCategory === 'goals'"
+        (click)="selectCategory('goals')">
+        <span class="tab-icon">🎯</span>
+        <span class="tab-label">Metas</span>
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="selectedCategory === 'consistency'"
+        (click)="selectCategory('consistency')">
+        <span class="tab-icon">🔥</span>
+        <span class="tab-label">Constancia</span>
+      </button>
+    </div>
+
+    <!-- Achievements Grid -->
+    <div class="achievements-grid">
+      <!-- Loading State -->
+      <div class="loading-state" *ngIf="isLoading || isLoadingUserAchievements">
+        <div class="loading-spinner"></div>
+        <p>Cargando logros...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="!isLoading && !isLoadingUserAchievements && filteredAchievements.length === 0">
+        <div class="empty-icon">🎯</div>
+        <h3>¡Comienza tu viaje!</h3>
+        <p>Aún no has desbloqueado logros en esta categoría. ¡Sigue ahorrando para desbloquear tus primeros logros!</p>
+        <button class="empty-action-btn" (click)="checkAchievements()">
+          Verificar Logros
+        </button>
+      </div>
+
+      <!-- Achievements Cards -->
+      <div 
+        class="achievement-card" 
+        *ngFor="let achievement of filteredAchievements; trackBy: trackByAchievement"
+        [class.unlocked]="achievement.unlocked"
+        [class.locked]="!achievement.unlocked"
+        [class.recent]="achievement.recentlyUnlocked">
+        
+        <div class="achievement-header">
+          <div class="achievement-icon">
+            <span class="icon">{{ achievement.icon }}</span>
+            <div class="unlock-badge" *ngIf="achievement.unlocked">✓</div>
+          </div>
+          <div class="achievement-info">
+            <h3 class="achievement-title">{{ achievement.name }}</h3>
+            <p class="achievement-description">{{ achievement.description }}</p>
+          </div>
+        </div>
+
+        <div class="achievement-footer">
+          <div class="achievement-progress" *ngIf="achievement.progress !== undefined">
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="achievement.progress"></div>
+            </div>
+            <span class="progress-text">{{ achievement.progress }}%</span>
+          </div>
+          
+          <div class="achievement-meta">
+            <span class="achievement-date" *ngIf="achievement.unlocked">
+              {{ achievement.unlockedAt | date:'shortDate' }}
+            </span>
+            <span class="achievement-points" *ngIf="achievement.points">
+              +{{ achievement.points }} pts
+            </span>
+          </div>
+        </div>
+
+        <!-- Unlock Animation -->
+        <div class="unlock-animation" *ngIf="achievement.recentlyUnlocked">
+          <div class="sparkles">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">⭐</span>
+            <span class="sparkle">🎉</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- All Achievements Modal -->
+<div *ngIf="modalAbierto" class="modal-overlay" (click)="cerrarModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>🏆 Todos los Logros</h2>
+      <button class="modal-close" (click)="cerrarModal()">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="achievements-categories">
+        <div class="category-section" *ngFor="let category of achievementCategories">
+          <h3 class="category-title">{{ category.name }}</h3>
+          <div class="category-achievements">
+            <div 
+              class="modal-achievement-item" 
+              *ngFor="let achievement of category.achievements"
+              [class.unlocked]="achievement.unlocked"
+              [class.locked]="!achievement.unlocked">
+              
+              <div class="item-icon">
+                <span>{{ achievement.icon }}</span>
+                <div class="unlock-indicator" *ngIf="achievement.unlocked">✓</div>
+              </div>
+              
+              <div class="item-content">
+                <h4 class="item-title">{{ achievement.name }}</h4>
+                <p class="item-description">{{ achievement.description }}</p>
+                <div class="item-meta">
+                  <span class="item-date" *ngIf="achievement.unlocked">
+                    {{ achievement.unlockedAt | date:'shortDate' }}
+                  </span>
+                  <span class="item-points" *ngIf="achievement.points">
+                    +{{ achievement.points }} pts
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confetti Animation -->
+<div *ngIf="showConfetti" class="confetti-container">
+  <div *ngFor="let confetti of confettiArray" class="confetti-piece" [ngStyle]="confetti"></div>
+</div>

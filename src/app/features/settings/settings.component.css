@@ -1,0 +1,437 @@
+.content,
+.content * {
+  box-sizing: border-box;
+}
+.content {
+  background: #dcdcd1;
+  border-radius: 0px 0px 0px 15px;
+  height: 944px;
+  position: absolute;
+  overflow: hidden;
+  margin-left: 220px;
+  margin-right: 1000px;
+  margin-top: 24px;
+  top: 39px;
+  bottom: 0px;
+  width: 100%;
+}
+.rectangle-314 {
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px;
+  width: 1144px;
+  height: 836px;
+  position: absolute;
+  left: 36px;
+  top: 70px;
+}
+.ofrece-diversas-herramientas-para-adaptar-la-experiencia-del-usuario {
+  color: #000000;
+  text-align: center;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 36px;
+  top: 89px;
+  width: 674px;
+  height: 19px;
+}
+.weolcome-buttons {
+  width: 1121px;
+  height: 53px;
+  position: absolute;
+  left: 36px;
+  top: 17px;
+}
+.settings {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-SemiBold", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 367px;
+  height: 33px;
+}
+.line-7 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px 0 0 0;
+  width: 1142px;
+  height: 0px;
+  position: absolute;
+  left: 37px;
+  top: 130px;
+}
+.line-8 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px 0 0 0;
+  width: 1142px;
+  height: 0px;
+  position: absolute;
+  left: 37px;
+  top: 221px;
+}
+.line-9 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px 0 0 0;
+  width: 1142px;
+  height: 0px;
+  position: absolute;
+  left: 37px;
+  top: 312px;
+}
+.line-10 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px 0 0 0;
+  width: 1142px;
+  height: 0px;
+  position: absolute;
+  left: 37px;
+  top: 403px;
+}
+.line-11 {
+  margin-top: -1px;
+  border-style: solid;
+  border-color: #bababa;
+  border-width: 1px 0 0 0;
+  width: 1142px;
+  height: 0px;
+  position: absolute;
+  left: 37px;
+  top: 494px;
+}
+.frame-239234 {
+  width: 1109px;
+  height: 45px;
+  position: absolute;
+  left: 54px;
+  top: 149px;
+}
+.group-239229 {
+  position: absolute;
+  inset: 0;
+}
+.planificaci-n-de-presupuestos {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 0px;
+  width: 275px;
+  height: 19px;
+}
+.planifica-un-presupuesto-de-gasto-para-tus-actividades {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 26px;
+  width: 346px;
+  height: 19px;
+}
+.icons {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0px;
+  top: 11px;
+  overflow: visible;
+}
+.icons2 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1077px;
+  top: 43px;
+  transform: translate(0px, -32px);
+  overflow: visible;
+}
+.frame-239237 {
+  width: 1110px;
+  height: 45px;
+  position: absolute;
+  left: 54px;
+  top: 238px;
+}
+.icons3 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0px;
+  top: 13px;
+  overflow: visible;
+}
+.group-239230 {
+  position: absolute;
+  inset: 0;
+}
+.limites-de-gastos {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 0px;
+  width: 275px;
+  height: 19px;
+}
+.crea-un-limite-de-gasto-a-una-categoria-exsistente {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 26px;
+  width: 346px;
+  height: 19px;
+}
+.icons4 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1078px;
+  top: 45px;
+  transform: translate(0px, -32px);
+  overflow: visible;
+}
+.frame-239236 {
+  width: 1110px;
+  height: 45px;
+  position: absolute;
+  left: 54px;
+  top: 332px;
+}
+.icons5 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  overflow: visible;
+}
+.group-239231 {
+  position: absolute;
+  inset: 0;
+}
+.recordatorios-personalizados {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 0px;
+  width: 275px;
+  height: 19px;
+}
+.ponte-un-recordatorio-para-un-limite-de-tus-gastos {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 26px;
+  width: 346px;
+  height: 19px;
+}
+.icons6 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1078px;
+  top: 42px;
+  transform: translate(0px, -32px);
+  overflow: visible;
+}
+.frame-239235 {
+  width: 1110px;
+  height: 45px;
+  position: absolute;
+  left: 54px;
+  top: 421px;
+}
+.icons7 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0px;
+  top: 12px;
+  overflow: visible;
+}
+.group-239232 {
+  position: absolute;
+  inset: 0;
+}
+.creaci-n-de-categorias {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 0px;
+  width: 275px;
+  height: 19px;
+}
+.crea-una-categoria-para-organizar-tus-movimientos {
+  color: #000000;
+  text-align: left;
+  font-family: "PalanquinDark-Medium", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  left: 41px;
+  top: 26px;
+  width: 346px;
+  height: 19px;
+}
+.icons8 {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 1078px;
+  top: 44px;
+  transform: translate(0px, -32px);
+  overflow: visible;
+}
+.top-63, .top-80, .main-content, .main-container, .settings-container {
+  top: 39px !important;
+}
+
+.settings-main-container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  background: #dcdcd1;
+  border-radius: 0px 0px 0px 15px;
+  height: 944px;
+  position: absolute;
+  margin-left: 220px;
+  margin-right: 1000px;
+  margin-top: 24px;
+  top: 39px;
+}
+
+.settings-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.2rem;
+  font-family: 'PalanquinDark-SemiBold', sans-serif;
+  color: #092c36;
+  margin-bottom: 0.5rem;
+}
+
+.settings-main-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.settings-desc {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 2.5rem;
+  font-family: 'PalanquinDark-Medium', sans-serif;
+}
+
+.settings-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.settings-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #fff;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+  text-align: left;
+  outline: none;
+  position: relative;
+}
+.settings-card:focus, .settings-card:hover {
+  box-shadow: 0 6px 24px rgba(14, 164, 155, 0.13);
+  background: #e6f7f6;
+  transform: translateY(-2px) scale(1.01);
+}
+
+.settings-card-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.settings-card-content {
+  flex: 1;
+}
+
+.settings-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0ea49b;
+  font-family: 'PalanquinDark-SemiBold', sans-serif;
+  margin-bottom: 0.2rem;
+}
+
+.settings-card-desc {
+  font-size: 1rem;
+  color: #333;
+  font-family: 'PalanquinDark-Regular', sans-serif;
+}
+
+.settings-card-arrow {
+  font-size: 2rem;
+  color: #0ea49b;
+  font-weight: bold;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+.settings-card:focus .settings-card-arrow, .settings-card:hover .settings-card-arrow {
+  color: #15313a;
+}
+
+@media (max-width: 700px) {
+  .settings-main-container {
+    padding: 1rem 0.2rem;
+  }
+  .settings-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .settings-title {
+    font-size: 1.3rem;
+  }
+}
