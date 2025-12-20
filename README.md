@@ -1,5 +1,3 @@
-# FinanCello (Frontend)
-
 <a id="readme-top"></a>
 
 <img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" width="100%">
@@ -29,8 +27,6 @@
   </p>
 </div>
 
----
-
 <details>
   <summary>Tabla de contenidos</summary>
   <ol>
@@ -51,13 +47,10 @@
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+<br>
 
----
-
-<a id="about-the-project"></a>
-
-## About the project
-
+<a id="about-the-project"></a>***About the project***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 FinanCello es una aplicación web enfocada en ayudarte a administrar tus finanzas.
 
 Incluye:
@@ -67,9 +60,8 @@ Incluye:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="built-with"></a>
-
-## Built with
+<a id="built-with"></a>***Built with***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 - ![Angular](https://img.shields.io/badge/Angular-20.0.4-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 - ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -79,10 +71,8 @@ Incluye:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="important-notices"></a>
-
-## Important notices
-
+<a id="important-notices"></a>***Important notices***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 > [!NOTE]
 > No necesitas instalar `ng` globalmente. Este proyecto ya incluye Angular CLI en `devDependencies`.
 >
@@ -93,10 +83,8 @@ Incluye:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="getting-started"></a>
-
-## Getting started
-
+<a id="getting-started"></a>***Getting started***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <a id="prerequisites"></a>
 
 ### Prerequisites
@@ -144,9 +132,8 @@ npm run test
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="environments"></a>
-
-## Environments
+<a id="environments"></a>***Environments***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 Los environments están en:
 
@@ -161,9 +148,8 @@ Variables relevantes:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="deployment"></a>
-
-## Deployment
+<a id="deployment"></a>***Deployment***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ### Netlify
 
@@ -179,10 +165,8 @@ Publish directory:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="contributing"></a>
-
-## Contributing
-
+<a id="contributing"></a>***Contributing***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 Contribuciones bienvenidas.
 
 1) Fork del proyecto
@@ -193,9 +177,11 @@ Contribuciones bienvenidas.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<a id="contact"></a>
-
-## Contact
-
-
+<a id="contact"></a>***Contact***
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<p align="center">
+  <a href="mailto:hexed_aal1x.ops@proton.me"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white&color=black" /></a>
+  <a href="https://www.instagram.com/hexed_aal1x"><img src="https://img.shields.io/badge/instagram-%2312100E.svg?&style=for-the-badge&logo=instagram&logoColor=white&color=black" /></a>
+  <a href="https://www.linkedin.com/in/leonardo-bravo-4120b8228/"><img src="https://img.shields.io/badge/linkedin-%2312100E.svg?&style=for-the-badge&logo=linkedin&logoColor=white&color=black" /></a>
+</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
