@@ -1,132 +1,128 @@
-<div class="content">
-  <div class="welcome">
-    <div class="carga-de-archivos-csv">Carga de archivos CSV</div>
-  </div>
-  <div class="upload-place" 
-       (dragover)="onDragOver($event)" 
-       (dragleave)="onDragLeave($event)" 
-       (drop)="onDrop($event)"
-       (click)="fileInput.click()"
-       [class.dragging]="isDragging">
-    <div class="frame-47">
-      <img class="group-5" src="/assets/img/Charge.circle.png" />
-      <div class="drag-files-text">
-        <div class="arrastre-y-suelte-sus-archivos-aqu">
-          Arrastre y suelte sus archivos aquí
-        </div>
-        <div class="o-seleccionar-archivos">
-          <span>
-            <span class="o-seleccionar-archivos-span">o</span>
-            <span class="o-seleccionar-archivos-span2">
-              seleccionar archivos
-            </span>
-          </span>
-        </div>
+<div class="upload-page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Carga de archivos</h1>
+      <p class="page-subtitle">Importa movimientos desde CSV o Excel de forma segura.</p>
+    </div>
+  </header>
+
+  <div class="upload-grid">
+    <section
+      class="dropzone"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      (click)="fileInput.click()"
+      [class.dragging]="isDragging"
+      [class.has-file]="!!selectedFile"
+      role="button"
+      tabindex="0"
+      (keydown.enter)="fileInput.click()"
+      (keydown.space)="$event.preventDefault(); fileInput.click()"
+    >
+      <div class="dropzone-icon" aria-hidden="true">
+        <lucide-icon name="upload" size="28"></lucide-icon>
       </div>
-      
-      <div *ngIf="selectedFile" style="margin-top: 20px; text-align: center;">
-        <div style="color: #0ea49b; font-weight: bold; margin-bottom: 10px;">
-          Archivo seleccionado: {{ selectedFile.name }}
+      <div class="dropzone-copy">
+        <p class="dropzone-title">Arrastra tu archivo aquí</p>
+        <p class="dropzone-hint">
+          o <span class="link-like">selecciona desde tu equipo</span>
+        </p>
+        <p class="dropzone-formats">Formatos admitidos: .csv, .xlsx</p>
+      </div>
+
+      <div class="dropzone-selected" *ngIf="selectedFile" (click)="$event.stopPropagation()">
+        <div class="selected-meta">
+          <span class="selected-name">{{ selectedFile.name }}</span>
+          <span class="selected-size">{{ formatFileSize(selectedFile.size) }}</span>
         </div>
-        <button (click)="upload()" 
-                [disabled]="isUploading"
-                style="background: #0ea49b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-          {{ isUploading ? 'Cargando...' : 'Cargar archivo' }}
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="upload()"
+          [disabled]="isUploading"
+        >
+          {{ isUploading ? 'Cargando…' : 'Cargar archivo' }}
         </button>
       </div>
-      
-      <div *ngIf="uploadError" style="margin-top: 10px; color: #dc3545; font-weight: bold;">
+
+      <p class="dropzone-error" *ngIf="uploadError" (click)="$event.stopPropagation()">
         {{ uploadError }}
+      </p>
+
+      <input
+        #fileInput
+        type="file"
+        accept=".xlsx,.csv"
+        (change)="onFileSelected($event)"
+        hidden
+      />
+    </section>
+
+    <aside class="files-panel">
+      <div class="panel-head">
+        <h2>Mis archivos</h2>
+        <span class="file-count">{{ uploadedFiles.length }}</span>
       </div>
-    </div>
-    <input #fileInput 
-           type="file" 
-           accept=".xlsx,.csv" 
-           (change)="onFileSelected($event)" 
-           style="display: none;">
+
+      <div class="files-list" *ngIf="uploadedFiles.length > 0; else emptyFiles">
+        <article class="file-row" *ngFor="let file of uploadedFiles">
+          <img class="file-icon" [src]="getFileIcon(file.file.name)" alt="" />
+          <div class="file-info">
+            <p class="file-name">{{ getFileName(file.file.name) }}</p>
+            <p class="file-date">{{ formatDate(file.uploadedAt) }}</p>
+          </div>
+          <button
+            type="button"
+            class="icon-btn"
+            (click)="removeFile(file.id)"
+            aria-label="Eliminar archivo"
+          >
+            <img src="assets/icons/trash.png" alt="" />
+          </button>
+        </article>
+      </div>
+
+      <ng-template #emptyFiles>
+        <div class="empty-state">
+          <p>Aún no has cargado archivos</p>
+        </div>
+      </ng-template>
+    </aside>
   </div>
-  <div class="transactions-history">
-    <div class="archivos-de-programaci-n">Archivos de programación</div>
-    <div class="table">
-      <div class="table-column">
-        <div class="table-header">
-          <div class="name">Nombre</div>
-        </div>
-        <div class="table-header2" *ngFor="let file of uploadedFiles">
-          <div class="date">{{ file.file.name }}</div>
-        </div>
-        <!-- Mostrar filas vacías si no hay suficientes archivos -->
-        <div class="table-header2" *ngFor="let item of getEmptyRows()">
-          <div class="date">-</div>
-        </div>
-      </div>
-      <div class="table-column2">
-        <div class="table-header">
-          <div class="date2">Fecha</div>
-        </div>
-        <div class="table-header2" *ngFor="let file of uploadedFiles">
-          <div class="date">{{ formatTableDate(file.uploadedAt) }}</div>
-        </div>
-        <!-- Mostrar filas vacías si no hay suficientes archivos -->
-        <div class="table-header2" *ngFor="let item of getEmptyRows()">
-          <div class="date">-</div>
-        </div>
-      </div>
-      <div class="table-column3">
-        <div class="table-header">
-          <div class="weigth">Peso</div>
-        </div>
-        <div class="table-header2" *ngFor="let file of uploadedFiles">
-          <div class="date">{{ formatFileSize(file.file.size) }}</div>
-        </div>
-        <!-- Mostrar filas vacías si no hay suficientes archivos -->
-        <div class="table-header2" *ngFor="let item of getEmptyRows()">
-          <div class="date">-</div>
-        </div>
-      </div>
-      <div class="table-column4">
-        <div class="table-header">
-          <div class="status">Estado</div>
-        </div>
-        <div class="table-header2" *ngFor="let file of uploadedFiles">
-          <div [class]="getStatusClass(file.status)">{{ getStatusText(file.status) }}</div>
-        </div>
-        <!-- Mostrar filas vacías si no hay suficientes archivos -->
-        <div class="table-header2" *ngFor="let item of getEmptyRows()">
-          <div class="date">-</div>
-        </div>
-      </div>
+
+  <section class="table-card">
+    <div class="panel-head">
+      <h2>Historial de cargas</h2>
     </div>
-  </div>
-  <div class="my-files">
-    <div class="my-files2">
-      <div class="my-files3">Mis archivos</div>
-      <img class="icons" src="assets/icons/dots-three.svg" />
+
+    <div class="table-wrap" *ngIf="uploadedFiles.length > 0; else emptyTable">
+      <table class="files-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Peso</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of uploadedFiles">
+            <td data-label="Nombre">{{ file.file.name }}</td>
+            <td data-label="Fecha">{{ formatTableDate(file.uploadedAt) }}</td>
+            <td data-label="Peso">{{ formatFileSize(file.file.size) }}</td>
+            <td data-label="Estado">
+              <span [class]="getStatusClass(file.status)">{{ getStatusText(file.status) }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="shedule-contacs">
-      <div *ngFor="let file of uploadedFiles; let i = index" 
-           [class]="'file-details' + (i > 0 ? (i > 2 ? '3' : '2') : '')">
-        <img [class]="'vector' + (i > 0 ? (i + 1) : '')" 
-             [src]="getFileIcon(file.file.name)" />
-        <div class="frame-16">
-          <div [class]="getFileNameClass(i)">{{ getFileName(file.file.name) }}</div>
-          <div [class]="getDateClass(i)">{{ formatDate(file.uploadedAt) }}</div>
-        </div>
-        <img [class]="'icons-trash-' + (i + 1)" 
-             src="assets/icons/trash.png" 
-             (click)="removeFile(file.id)"
-             style="cursor: pointer;" />
+
+    <ng-template #emptyTable>
+      <div class="empty-state table-empty">
+        <p>Cuando cargues un archivo, aparecerá aquí el detalle.</p>
       </div>
-      
-      <!-- Mostrar mensaje cuando no hay archivos -->
-      <div *ngIf="uploadedFiles.length === 0" class="no-files-message">
-        <div style="text-align: center; color: #666; padding: 20px;">
-          No hay archivos cargados aún
-        </div>
-      </div>
-    </div>
-    <div class="view-balance-history">
-      <div class="ver-historial-de-archivos">Ver historial</div>
-    </div>
-  </div>
+    </ng-template>
+  </section>
 </div>

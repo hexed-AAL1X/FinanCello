@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FinancialMovementService } from '../../../../services/FinancialMovement.service';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule } from 'lucide-angular';
 
 interface FileUpload {
   id: string;
@@ -15,7 +16,7 @@ interface FileUpload {
   standalone: true,
   templateUrl: './movement-upload.component.html',
   styleUrls: ['./movement-upload.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, LucideAngularModule]
 })
 export class MovementUploadComponent {
   isDragging = false;
@@ -25,10 +26,7 @@ export class MovementUploadComponent {
   uploadError: string | null = null;
   uploadedFiles: FileUpload[] = [];
 
-  constructor(private financialService: FinancialMovementService) {
-    // No cargar archivos del localStorage al reiniciar la página
-    // this.loadUploadedFiles();
-  }
+  constructor(private financialService: FinancialMovementService) {}
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -39,8 +37,6 @@ export class MovementUploadComponent {
     event.preventDefault();
     this.isDragging = false;
   }
-
-
 
   upload() {
     if (!this.selectedFile) return;
@@ -65,8 +61,8 @@ export class MovementUploadComponent {
       },
       error: (err) => {
         fileUpload.status = 'error';
-        fileUpload.error = err.error || 'Error on upload';
-        this.uploadError = err.error || 'Error on upload';
+        fileUpload.error = err.error || 'Error al cargar';
+        this.uploadError = err.error || 'Error al cargar el archivo';
       },
       complete: () => {
         this.isUploading = false;
@@ -76,25 +72,6 @@ export class MovementUploadComponent {
 
   removeFile(fileId: string) {
     this.uploadedFiles = this.uploadedFiles.filter(f => f.id !== fileId);
-  }
-
-  private loadUploadedFiles() {
-    const savedFiles = localStorage.getItem('uploadedFiles');
-    if (savedFiles) {
-      try {
-        const files = JSON.parse(savedFiles);
-        this.uploadedFiles = files.map((file: any) => ({
-          ...file,
-          uploadedAt: file.uploadedAt ? new Date(file.uploadedAt) : undefined
-        }));
-      } catch (error) {
-        console.error('Error loading uploaded files:', error);
-      }
-    }
-  }
-
-  private saveUploadedFiles() {
-    localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
   }
 
   formatFileSize(bytes: number): string {
@@ -107,10 +84,10 @@ export class MovementUploadComponent {
 
   getStatusClass(status: string): string {
     switch (status) {
-      case 'uploading': return 'date3'; 
-      case 'success': return 'date5'; 
-      case 'error': return 'date4'; 
-      default: return 'date3';
+      case 'uploading': return 'status-uploading';
+      case 'success': return 'status-success';
+      case 'error': return 'status-error';
+      default: return 'status-uploading';
     }
   }
 
@@ -127,56 +104,27 @@ export class MovementUploadComponent {
     return fileName.replace(/\.[^/.]+$/, '');
   }
 
-  getFileNameClass(index: number): string {
-    const classes = ['gastos-t-1', 'marketing-oportunid', 'run-name', 'country-travel', 'job-income'];
-    return classes[index] || 'gastos-t-1';
-  }
-
-  getDateClass(index: number): string {
-    const classes = ['dec-24-2025', 'dec-21-2025', 'nov-28-2025', 'oct-29-2025', 'sept-29-2025'];
-    return classes[index] || 'dec-24-2025';
-  }
-
   formatDate(date: Date | undefined): string {
     if (!date) return 'Fecha no disponible';
-    
-    const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
-    
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    
-    return `${month} ${day}, ${year}`;
+    return date.toLocaleDateString('es-ES', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
   }
 
   formatTableDate(date: Date | undefined): string {
-    if (!date) return '-';
-    
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().length === 1 ? 
-      '0' + (date.getMonth() + 1) : (date.getMonth() + 1).toString();
-    const day = date.getDate().toString().length === 1 ? 
-      '0' + date.getDate() : date.getDate().toString();
-    
-    return `${year}-${month}-${day}`;
+    if (!date) return '—';
+    return date.toLocaleDateString('es-ES');
   }
 
   getStatusText(status: string): string {
     switch (status) {
-      case 'uploading': return 'Processing';
-      case 'success': return 'Uploaded';
-      case 'error': return 'Failed';
-      default: return 'Unknown';
+      case 'uploading': return 'Procesando';
+      case 'success': return 'Cargado';
+      case 'error': return 'Fallido';
+      default: return 'Desconocido';
     }
-  }
-
-  getEmptyRows(): any[] {
-    const maxRows = 3;
-    const emptyRows = maxRows - this.uploadedFiles.length;
-    return emptyRows > 0 ? Array(emptyRows).fill(null) : [];
   }
 
   onFileSelected(event: Event) {

@@ -1,8 +1,11 @@
-<div class="dashboard-layout">
-  <app-sidebar class="sidebar"></app-sidebar>
+<div class="dashboard-layout" [class.sidebar-is-collapsed]="sidebarCollapsed">
+  <app-sidebar
+    class="sidebar"
+    (sidebarCollapsedChange)="onSidebarCollapsed($event)"
+  ></app-sidebar>
 
   <div class="content-area">
-    <app-header class="header"></app-header>
+    <app-header class="header" (sidebarToggle)="toggleSidebar()"></app-header>
 
     <div class="page-content">
       <router-outlet></router-outlet>

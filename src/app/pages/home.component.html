@@ -99,6 +99,7 @@
         <!-- Empty State -->
         <div class="empty-state" *ngIf="recentTransactions.length === 0">
           <p>No hay transacciones recientes</p>
+          <p class="empty-state-hint">Agrega un movimiento para verlo aquí</p>
         </div>
       </div>
     </div>
@@ -138,7 +139,6 @@
 
       <!-- Goals List -->
       <div class="goals-list" *ngIf="!isLoadingGoals">
-        <!-- Display actual goals -->
         <div class="goal-item" *ngFor="let goal of recentGoals">
           <div class="goal-title">{{ goal.title }}</div>
           <div class="goal-description">{{ goal.description }}</div>
@@ -154,21 +154,9 @@
           </div>
         </div>
 
-        <!-- Display placeholder cards when no goals -->
-        <div class="goal-item placeholder" *ngFor="let item of [1,2,3,4]; let i = index" 
-             [style.display]="recentGoals.length > 0 ? 'none' : 'block'">
-          <div class="goal-title">-</div>
-          <div class="goal-description">-</div>
-          <div class="goal-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 0%"></div>
-            </div>
-            <div class="progress-text">0% completado</div>
-          </div>
-          <div class="goal-amount">
-            <span class="current-amount">$0</span>
-            <span class="target-amount">de $0</span>
-          </div>
+        <div class="empty-state" *ngIf="recentGoals.length === 0">
+          <p>Aún no tienes metas de ahorro</p>
+          <p class="empty-state-hint">Crea una desde Acciones rápidas</p>
         </div>
       </div>
     </div>

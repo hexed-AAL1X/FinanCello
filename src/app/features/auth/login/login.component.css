@@ -48,9 +48,10 @@
 /* Violin Icon with Arrow */
 .logo-icon {
   position: relative;
-  margin-bottom: 40px;
-  width: 220px;
-  height: 220px;
+  margin-bottom: 28px;
+  width: min(320px, 70vw);
+  height: auto;
+  aspect-ratio: 620 / 140;
 }
 
 .financello-logo {

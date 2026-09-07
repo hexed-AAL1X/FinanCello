@@ -24,10 +24,12 @@ import { SnackbarService } from '../../../shared/layout/snackbar/snackbar.servic
 import AOS from 'aos';
 import Typed from 'typed.js';
 
+import { ViolinParticlesComponent } from '../violin-particles/violin-particles.component';
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, ReactiveFormsModule],
+  imports: [CommonModule, LucideAngularModule, ReactiveFormsModule, ViolinParticlesComponent],
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,6 +48,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private routerEventsSub?: Subscription;
 
   isHeaderScrolled = false;
+  isMobileNavOpen = false;
 
   isAuthModalOpen = false;
   authTab: 'login' | 'signup' = 'login';
@@ -136,10 +139,16 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this.gsapCtx = gsap.context(() => {
-      gsap.from('.hco', {
+      gsap.from('.hero-copy', {
         opacity: 0,
         y: 24,
-        duration: 0.9,
+        duration: 0.95,
+        ease: 'power2.out',
+      });
+      gsap.from('.hero-particles', {
+        opacity: 0,
+        duration: 1.1,
+        delay: 0.1,
         ease: 'power2.out',
       });
     }, this.landingRoot.nativeElement);
@@ -218,6 +227,7 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
    * Navega a la página de inicio de sesión
    */
   navigateToLogin(): void {
+    this.closeMobileNav();
     this.openAuthModal('login');
   }
 
@@ -225,30 +235,34 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
    * Navega a la página de registro
    */
   navigateToRegister(): void {
+    this.closeMobileNav();
     this.openAuthModal('signup');
   }
 
+  toggleMobileNav(): void {
+    this.isMobileNavOpen = !this.isMobileNavOpen;
+    this.cdr.markForCheck();
+  }
+
+  closeMobileNav(): void {
+    if (!this.isMobileNavOpen) {
+      return;
+    }
+    this.isMobileNavOpen = false;
+    this.cdr.markForCheck();
+  }
+
   private syncAuthModalFromUrl(): void {
-    const url = this.router.url;
+    const url = this.router.url.split('?')[0];
     const authParamRaw = this.route.snapshot.queryParamMap.get('auth');
     const authParam = authParamRaw === 'login' || authParamRaw === 'signup' ? authParamRaw : null;
 
+    // Rutas /auth/* sin query: normalizar a landing con modal (una sola vez)
     if (!authParam) {
-      if (url.startsWith('/auth/login')) {
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { auth: 'login' },
-          queryParamsHandling: 'merge',
-          replaceUrl: true,
-        });
-        return;
-      }
-
-      if (url.startsWith('/auth/register')) {
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { auth: 'signup' },
-          queryParamsHandling: 'merge',
+      if (url === '/auth/login' || url === '/auth/register') {
+        const tab = url.endsWith('register') ? 'signup' : 'login';
+        this.router.navigate(['/'], {
+          queryParams: { auth: tab },
           replaceUrl: true,
         });
         return;
@@ -258,29 +272,21 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (authParam === 'login') {
       this.isAuthModalOpen = true;
       this.authTab = 'login';
-
       this.setPageScrollLocked(true);
-
       this.cdr.markForCheck();
-
       return;
     }
 
     if (authParam === 'signup') {
       this.isAuthModalOpen = true;
       this.authTab = 'signup';
-
       this.setPageScrollLocked(true);
-
       this.cdr.markForCheck();
-
       return;
     }
 
     this.isAuthModalOpen = false;
-
     this.setPageScrollLocked(false);
-
     this.cdr.markForCheck();
   }
 
@@ -307,13 +313,20 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.cdr.markForCheck();
 
+    const onAuthRoute = this.router.url.startsWith('/auth');
+
+    if (redirectToRoot || onAuthRoute) {
+      this.router.navigate(['/'], { replaceUrl: true });
+      return;
+    }
+
     const authParam = this.route.snapshot.queryParamMap.get('auth');
     if (authParam !== null) {
       this.router.navigate([], {
         relativeTo: this.route,
         queryParams: { auth: null },
         queryParamsHandling: 'merge',
-        replaceUrl: !redirectToRoot,
+        replaceUrl: true,
       });
     }
   }

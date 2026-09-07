@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "PalanquinDark-Bold";
-    src: url("/assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
+  font-family: "PalanquinDark-Bold";
+  src: url("/assets/fonts/PalanquinDark-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "PalanquinDark-Medium";
@@ -40,422 +40,71 @@
   height: 100vh;
   overflow: hidden;
 }
-/* Estilo general del layout */
+
 .dashboard-layout {
   display: flex;
-  position: fixed;
-  inset: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background: #dcdcd1;
 }
 
-/* Sidebar fijo a la izquierda */
-.sidebar {
-  width: 250px;
+/* Reserva espacio del sidebar (el menú interno es position: fixed) */
+.dashboard-layout > app-sidebar.sidebar {
+  display: block;
+  flex: 0 0 239px;
+  width: 239px;
+  min-width: 239px;
+  max-width: 239px;
   height: 100%;
-  background-color: #1a1a1a;
-  color: white;
-  flex-shrink: 0;
+  transition: flex-basis 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Zona derecha que incluye header y contenido */
+.dashboard-layout.sidebar-is-collapsed > app-sidebar.sidebar {
+  flex: 0 0 72px;
+  width: 72px;
+  min-width: 72px;
+  max-width: 72px;
+}
+
 .content-area {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 0;
   overflow: hidden;
+  transition: margin 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Header alineado correctamente arriba del contenido */
 .header {
   width: 100%;
-  display: block;
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-/* Contenido debajo del header */
 .page-content {
   flex: 1;
-  padding: 20px 20px 20px 10px;
-  margin-top: 0px;
-  overflow-y: auto;
   min-height: 0;
-  background-color: #DCDCD1;
-}
-
-.us-12-acceso-r-pido-a-datos-clave-desde-el-panel-principal,
-.us-12-acceso-r-pido-a-datos-clave-desde-el-panel-principal * {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 20px 28px;
+  background-color: #dcdcd1;
   box-sizing: border-box;
 }
-.us-12-acceso-r-pido-a-datos-clave-desde-el-panel-principal {
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: 1024px;
-  position: relative;
-}
-.content-true {
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 1024px;
-  position: relative;
-}
-.sidebar {
-  background: #092c36;
-  width: 260px;
-  height: 1024px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  overflow: hidden;
-}
-.icons-logo {
-  padding: 10px 15px 10px 15px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
-  width: 258px;
-  height: 120px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-}
-.cello-3-1 {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  position: relative;
-  object-fit: cover;
-  aspect-ratio: 1;
-}
-.financello {
-  color: #ffffff;
-  text-align: left;
-  font-family: "Cinzel-Bold", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  position: relative;
-  width: 160px;
-  height: 21px;
-}
-.frame-228 {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 240px;
-  position: absolute;
-  left: 0px;
-  top: 137px;
-}
-.links {
-  padding: 0px 16px 0px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 265px;
-  position: relative;
-  overflow: hidden;
-}
-.page-link {
-  background: #0b6862;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: #0ea49b;
-  border-width: 1px;
-  flex-shrink: 0;
-  width: 208px;
-  height: 45px;
-  position: relative;
-  overflow: hidden;
-}
-.home {
-  color: #ffffff;
-  text-align: left;
-  font-family: "PalanquinDark-Medium", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  position: absolute;
-  right: -2.4%;
-  left: 26.44%;
-  width: 75.96%;
-  bottom: 31.82%;
-  top: 15.91%;
-  height: 52.27%;
-}
-.icons {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.page-link2 {
-  border-radius: 10px;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 45px;
-  position: relative;
-  overflow: hidden;
-}
-.home2 {
-  color: #ffffff;
-  text-align: left;
-  font-family: "PalanquinDark-Medium", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  position: absolute;
-  left: 55px;
-  top: 7px;
-  width: 158px;
-  height: 23px;
-}
-.icons2 {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.icons3 {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.icons-piggy-bank-1 {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.page-link3 {
-  border-radius: 10px;
-  flex-shrink: 0;
-  width: 208px;
-  height: 45px;
-  position: relative;
-  overflow: hidden;
-}
-.icons4 {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.line-6 {
-  margin-top: -1px;
-  border-style: solid;
-  border-color: #0b6862;
-  border-width: 1px 0 0 0;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 0px;
-  position: relative;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
-}
-.links2 {
-  padding: 0px 16px 0px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 100px;
-  position: relative;
-  overflow: hidden;
-}
-.icons5 {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.icons6 {
-  width: 15.38%;
-  height: 72.73%;
-  position: absolute;
-  right: 79.81%;
-  left: 4.81%;
-  bottom: 13.64%;
-  top: 13.64%;
-  overflow: visible;
-}
-.navbar {
-  background: #e7e7e0;
-  border-radius: 15px 0px 0px 0px;
-  border-style: solid;
-  border-color: #bababa;
-  border-width: 0px 0px 1px 0px;
-  padding: 15px 40px 15px 25px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: 1680px;
-  height: 80px;
-  position: absolute;
-  left: 240px;
-  top: 0px;
-  overflow: hidden;
-}
-.dashboard {
-  color: #000000;
-  text-align: left;
-  font-family: "PalanquinDark-Medium", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  position: relative;
-  width: 167px;
-  height: 38px;
-}
-.user-profile-icon {
-  display: flex;
-  flex-direction: row;
-  gap: 14px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.frame-4 {
-  background: #e7e7e0;
-  border-radius: 100px;
-  border-style: solid;
-  border-color: #bababa;
-  border-width: 1px;
-  flex-shrink: 0;
-  width: 49px;
-  height: 49px;
-  position: relative;
-  overflow: hidden;
-}
-.icons7 {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  left: 9px;
-  top: 9px;
-  overflow: visible;
-}
-.frame-2 {
-  background: #e7e7e0;
-  border-radius: 100px;
-  border-style: solid;
-  border-color: #bababa;
-  border-width: 1px;
-  flex-shrink: 0;
-  width: 49px;
-  height: 49px;
-  position: relative;
-  overflow: hidden;
-}
-.icons8 {
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  left: 9px;
-  top: 9px;
-  overflow: visible;
-}
-.frame-5 {
-  background: #e7e7e0;
-  border-radius: 100px;
-  border-style: solid;
-  border-color: #bababa;
-  border-width: 1px;
-  padding: 7px 11px 7px 11px;
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-user-32 {
-  background: #ffffff;
-  border-radius: 16px;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: hidden;
-}
-.rectangle {
-  background: #0ea49b;
-  border-radius: 14px;
-  width: 14px;
-  height: 14px;
-  position: absolute;
-  left: 9px;
-  top: 6px;
-}
-.rectangle2 {
-  background: #0ea49b;
-  border-radius: 48px;
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  left: -8px;
-  top: 21px;
-}
-.jhon-doe {
-  color: #000000;
-  text-align: left;
-  font-family: "PalanquinDark-Medium", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  position: relative;
-  width: 76px;
-  height: 26px;
-}
-.icons9 {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  position: relative;
-  overflow: visible;
+
+@media (max-width: 900px) {
+  .dashboard-layout > app-sidebar.sidebar,
+  .dashboard-layout.sidebar-is-collapsed > app-sidebar.sidebar {
+    flex: 0 0 0;
+    width: 0;
+    min-width: 0;
+    max-width: 0;
+  }
+
+  .page-content {
+    padding: 12px 12px 24px;
+  }
 }

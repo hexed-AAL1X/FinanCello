@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnInit, OnDestroy, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { AchievementService } from '../../../services/Achievement.service';
 import { AchievementEventsService } from '../../../services/achievement-events.service';
-import { Subscription } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,6 +14,8 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit, OnDestroy {
+  @Output() sidebarCollapsedChange = new EventEmitter<boolean>();
+
   userInfo: any;
   activeSection: string = 'home';
   
@@ -23,6 +24,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   achievementCount: number = 0;
 
   private achievementRefreshSubscription?: Subscription;
+  private routerSubscription?: Subscription;
 
   constructor(
     private router: Router,
@@ -31,7 +33,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Add a small delay to ensure user is fully loaded
+    this.syncActiveFromUrl(this.router.url);
+    this.routerSubscription = this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((e) => this.syncActiveFromUrl(e.urlAfterRedirects));
+
     setTimeout(() => {
       this.loadUserAchievements();
     }, 1000);
@@ -39,9 +45,20 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.achievementRefreshSubscription) {
-      this.achievementRefreshSubscription.unsubscribe();
-    }
+    this.achievementRefreshSubscription?.unsubscribe();
+    this.routerSubscription?.unsubscribe();
+  }
+
+  private syncActiveFromUrl(url: string): void {
+    const path = url.split('?')[0];
+    if (path.includes('/dashboard/finances')) this.activeSection = 'myfinances';
+    else if (path.includes('/dashboard/load-files')) this.activeSection = 'loadfiles';
+    else if (path.includes('/dashboard/categories')) this.activeSection = 'categories';
+    else if (path.includes('/dashboard/savinggoals')) this.activeSection = 'savinggoals';
+    else if (path.includes('/dashboard/logros')) this.activeSection = 'logros';
+    else if (path.includes('/dashboard/profile')) this.activeSection = 'profile';
+    else if (path.includes('/dashboard/settings')) this.activeSection = 'settings';
+    else if (path.startsWith('/dashboard')) this.activeSection = 'home';
   }
 
   private getUserId(): number {
@@ -126,27 +143,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   toggleSidebar(): void {
     this.isCollapsed = !this.isCollapsed;
+    this.sidebarCollapsedChange.emit(this.isCollapsed);
   }
 
   getAdmin(): void {
     alert('Funcionalidad para obtener cuenta admin próximamente.');
   }
-
-  ngAfterViewInit(): void {
-    const buttons = document.querySelectorAll('.sidebar-button');
-  
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        buttons.forEach(btn => {
-          // Si no es el botón HOME, quítale la clase active
-          if (!btn.classList.contains('home-button')) {
-            btn.classList.remove('active');
-          }
-        });
-  
-        // Agrega la clase active al botón clickeado
-        button.classList.add('active');
-      });
-    });
-  }  
 } 

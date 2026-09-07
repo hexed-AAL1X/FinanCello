@@ -1,347 +1,203 @@
 <div class="r" #landingRoot>
-  <header class="h" [class.is-scrolled]="isHeaderScrolled">
-    <div class="hc">
-      <div class="hb">
-        <img src="/assets/img/favicon.png" alt="FinanCello" class="bi">
-        <span class="bt">FinanCello</span>
-      </div>
-      <nav class="hn">
-        <a href="#soluciones" class="nl">Soluciones</a>
-        <a href="#funciones" class="nl">Funciones</a>
-        <a href="#testimonios" class="nl">Testimonios</a>
-        <a href="#nosotros" class="nl">Nosotros</a>
-        <a href="#contacto" class="nl">Contacto</a>
+  <header class="site-header" [class.is-scrolled]="isHeaderScrolled" [class.nav-open]="isMobileNavOpen">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" (click)="closeMobileNav()">
+        <img src="/assets/img/financello-logo.png" alt="FinanCello" class="brand-logo brand-logo--on-dark" />
+        <img src="/assets/img/financello-logo-ink.png" alt="" class="brand-logo brand-logo--on-light" aria-hidden="true" />
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        (click)="toggleMobileNav()"
+        [attr.aria-expanded]="isMobileNavOpen"
+        aria-label="Menú"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Principal">
+        <a href="#manifiesto" class="nav-link" (click)="closeMobileNav()">Manifiesto</a>
+        <a href="#funciones" class="nav-link" (click)="closeMobileNav()">Instrumentos</a>
+        <a href="#proceso" class="nav-link" (click)="closeMobileNav()">Cómo suena</a>
+        <a href="#contacto" class="nav-link" (click)="closeMobileNav()">Contacto</a>
       </nav>
-      <div class="ha">
-        <button class="btn btn-secondary" (click)="navigateToLogin()">Ingresar</button>
+
+      <div class="header-actions">
+        <button type="button" class="btn btn-ghost" (click)="navigateToLogin()">Ingresar</button>
+        <button type="button" class="btn btn-solid" (click)="navigateToRegister()">Empezar</button>
       </div>
     </div>
   </header>
 
-  <main class="m">
+  <main>
     <section class="hero" id="inicio">
-      <div class="hec">
-        <div class="hco">
-          <div class="hero-badge">
-            <span class="badge-text">Herramientas de perforación para finanzas personales</span>
-          </div>
-          <h1 class="ht">
-            <span class="ht-line1">
-              <span class="th" #typedElement></span>
-              <span class="ht-join">de tus finanzas</span>
-            </span>
-            <span class="ht-line2">personales y empresariales</span>
-          </h1>
-          <p class="hd">
-            FinanCello es la plataforma integral para gestionar ingresos, egresos, metas de ahorro y presupuestos. Toma decisiones financieras informadas con herramientas profesionales.
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-score" aria-hidden="true"></div>
+
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <p class="hero-brand">FinanCello</p>
+          <h1 class="hero-title">Tus finanzas,<br />con tempo propio.</h1>
+          <p class="hero-lead">
+            Una plataforma elegante para dirigir ingresos, gastos y metas — sin ruido, con precisión.
           </p>
+          <div class="hero-cta">
+            <button type="button" class="btn btn-solid btn-lg" (click)="navigateToRegister()">Afinar mi cuenta</button>
+            <a class="hero-link" href="#manifiesto">Ver el manifiesto</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <app-violin-particles class="hero-particles"></app-violin-particles>
         </div>
       </div>
-      <svg
-        class="hero-waves"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <defs>
-          <path
-            id="wave-path"
-            d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-          ></path>
-        </defs>
-        <g class="wave1">
-          <use xlink:href="#wave-path" href="#wave-path" x="50" y="3" fill="rgba(255,255,255,.1)"></use>
-        </g>
-        <g class="wave2">
-          <use xlink:href="#wave-path" href="#wave-path" x="50" y="0" fill="rgba(255,255,255,.2)"></use>
-        </g>
-        <g class="wave3">
-          <use xlink:href="#wave-path" href="#wave-path" x="50" y="9" fill="#fff"></use>
-        </g>
-      </svg>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="soluciones">
-      <div class="about-container">
-        <div class="about-content" data-aos="fade-right" data-aos-duration="800">
-          <h2 class="section-title">¿Qué es FinanCello?</h2>
-          <p class="section-description">
-            FinanCello es una plataforma integral de gestión financiera diseñada específicamente para personas y pequeñas empresas que buscan tomar control total de su economía. Desarrollada con las mejores prácticas en tecnología financiera.
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Ingresos</span><span>·</span><span>Metas</span><span>·</span><span>Ahorro</span><span>·</span>
+        <span>Categorías</span><span>·</span><span>Claridad</span><span>·</span><span>Ritmo</span><span>·</span>
+        <span>Ingresos</span><span>·</span><span>Metas</span><span>·</span><span>Ahorro</span><span>·</span>
+        <span>Categorías</span><span>·</span><span>Claridad</span><span>·</span><span>Ritmo</span><span>·</span>
+      </div>
+    </div>
+
+    <section class="manifesto" id="manifiesto">
+      <div class="shell manifesto-grid">
+        <div class="manifesto-aside" data-aos="fade-right">
+          <p class="eyebrow">Manifiesto</p>
+          <h2 class="display">El dinero también necesita un director.</h2>
+        </div>
+        <div class="manifesto-body" data-aos="fade-left">
+          <p>
+            FinanCello nace de una idea simple: la gestión financiera puede sentirse refinada.
+            Menos paneles saturados. Más lectura clara. Un solo escenario donde cada movimiento tiene su lugar.
           </p>
-          <div class="about-stats">
-            <div class="stat-item">
-              <div class="stat-number">+5</div>
-              <div class="stat-label">Módulos integrados</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Datos seguros</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">Disponibilidad</div>
-            </div>
-          </div>
+          <ul class="audience-list">
+            <li>
+              <span class="aud-label">Personas</span>
+              <span class="aud-text">Presupuesto, ahorro y control del mes con calma.</span>
+            </li>
+            <li>
+              <span class="aud-label">PyMEs</span>
+              <span class="aud-text">Movimientos y categorías para operar sin caos.</span>
+            </li>
+            <li>
+              <span class="aud-label">Emprendedores</span>
+              <span class="aud-text">Metas de capital y ritmo de crecimiento visible.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Features Destacados -->
-    <section class="featured-products" id="funciones">
-      <div class="featured-container">
-        <div class="featured-header" data-aos="fade-up" data-aos-duration="600">
-          <h2 class="section-title">Funciones <span class="title-accent">destacadas</span></h2>
-        </div>
-        <div class="featured-grid">
-          <div class="product-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-            <div class="product-image">
-              <div class="product-preview">
-                <lucide-icon name="receipt" size="32" class="preview-icon"></lucide-icon>
-              </div>
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Movimientos</h3>
-              <p class="product-description">Registra y categoriza ingresos y egresos con importación desde Excel.</p>
-              <button class="product-button">
-                <span>Ver más</span>
-                <lucide-icon name="arrow-right" size="16"></lucide-icon>
-              </button>
-            </div>
-          </div>
-          <div class="product-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-            <div class="product-image">
-              <div class="product-preview">
-                <lucide-icon name="target" size="32" class="preview-icon"></lucide-icon>
-              </div>
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Metas de Ahorro</h3>
-              <p class="product-description">Crea y da seguimiento a tus objetivos financieros con contribuciones medibles.</p>
-              <button class="product-button">
-                <span>Ver más</span>
-                <lucide-icon name="arrow-right" size="16"></lucide-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Business Lines -->
-    <section class="business-lines" id="testimonios">
-      <div class="business-container">
-        <div class="business-header" data-aos="fade-up" data-aos-duration="600">
-          <h2 class="section-title">Líneas de <span class="title-accent">negocio</span></h2>
-        </div>
-        <div class="business-grid">
-          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-            <div class="business-image">
-              <div class="business-preview">
-                <lucide-icon name="user" size="48" class="business-icon"></lucide-icon>
-              </div>
-            </div>
-            <div class="business-info">
-              <h3 class="business-title">Personas</h3>
-              <p class="business-description">Gestión financiera personal para individuos y familias.</p>
-            </div>
-          </div>
-          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-            <div class="business-image">
-              <div class="business-preview">
-                <lucide-icon name="building" size="48" class="business-icon"></lucide-icon>
-              </div>
-            </div>
-            <div class="business-info">
-              <h3 class="business-title">PyMEs</h3>
-              <p class="business-description">Soluciones financieras para pequeñas y medianas empresas.</p>
-            </div>
-          </div>
-          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-            <div class="business-image">
-              <div class="business-preview">
-                <lucide-icon name="briefcase" size="48" class="business-icon"></lucide-icon>
-              </div>
-            </div>
-            <div class="business-info">
-              <h3 class="business-title">Emprendedores</h3>
-              <p class="business-description">Herramientas para startups y nuevos negocios.</p>
-            </div>
-          </div>
-          <div class="business-card" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
-            <div class="business-image">
-              <div class="business-preview">
-                <lucide-icon name="graduation-cap" size="48" class="business-icon"></lucide-icon>
-              </div>
-            </div>
-            <div class="business-info">
-              <h3 class="business-title">Estudiantes</h3>
-              <p class="business-description">Educación financiera para jóvenes y estudiantes.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trust Section -->
-    <section class="trust" id="nosotros">
-      <div class="trust-container">
-        <div class="trust-header" data-aos="fade-up" data-aos-duration="600">
-          <div class="trust-badge">NUESTROS CLIENTES</div>
-          <h2 class="section-title">Ellos confían en <span class="title-accent">nosotros</span></h2>
-        </div>
-        <p class="trust-description" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-          Somos una empresa orientada y enfocada en brindar el mejor servicio y la mayor calidad en productos y servicios tecnológicos para el control financiero personal y empresarial.
-        </p>
-        <div class="trust-logos" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-          <div class="logo-row">
-            <div class="trust-logo">BANCO FINANCIAL</div>
-            <div class="trust-logo">CONTADORES UNIDOS</div>
-            <div class="trust-logo">NEXA</div>
-            <div class="trust-logo">GESTIÓN +</div>
-            <div class="trust-logo">FINTECH</div>
-            <div class="trust-logo">ADVISORS</div>
-          </div>
-          <div class="logo-row">
-            <div class="trust-logo">PLANNING</div>
-            <div class="trust-logo">SOLUTIONS</div>
-            <div class="trust-logo">GLENCORE</div>
-            <div class="trust-logo">EXECUTIVE</div>
-            <div class="trust-logo">GOLDEN MOUNTAIN</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="contacto">
-      <div class="cta-container">
-        <div class="cta-content">
-          <div class="cta-left" data-aos="fade-right" data-aos-duration="800">
-            <div class="cta-badge">ATENCIÓN AL CLIENTE</div>
-            <h2 class="cta-title">Atención al cliente</h2>
-            <p class="cta-description">
-              Estamos aquí para ayudarte. Nuestro equipo de soporte está disponible para resolver cualquier consulta sobre FinanCello y guiarte en tu experiencia financiera.
-            </p>
-            <div class="cta-features">
-              <div class="feature-item">
-                <lucide-icon name="check" size="16" class="check-icon"></lucide-icon>
-                <span>Soporte 24/7 disponible</span>
-              </div>
-              <div class="feature-item">
-                <lucide-icon name="check" size="16" class="check-icon"></lucide-icon>
-                <span>Respuesta rápida garantizada</span>
-              </div>
-              <div class="feature-item">
-                <lucide-icon name="check" size="16" class="check-icon"></lucide-icon>
-                <span>Equipo especializado en finanzas</span>
-              </div>
-            </div>
-            <button class="btn btn-primary cta-button" (click)="navigateToLogin()">
-              <span>Ingresar</span>
-              <lucide-icon name="arrow-right" size="18"></lucide-icon>
-            </button>
-          </div>
-          <div class="cta-right" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-            <div class="contact-card">
-              <h3 class="contact-title">Póngase en contacto</h3>
-              <p class="contact-subtitle">Escríbanos sus datos para recibir más información</p>
-              <div class="contact-info">
-                <div class="contact-item">
-                  <lucide-icon name="phone" size="16"></lucide-icon>
-                  <span>+51 999 888 777</span>
-                </div>
-                <div class="contact-item">
-                  <lucide-icon name="mail" size="16"></lucide-icon>
-                  <span>contacto&#64;financello.com</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work With Us -->
-    <section class="work-with-us">
-      <div class="work-container">
-        <div class="work-content" data-aos="fade-up" data-aos-duration="800">
-          <h2 class="work-title">Trabaje con nosotros</h2>
-          <p class="work-description">
-            FinanCello está en constante evolución y crecimiento. Únete a nuestro equipo de desarrollo y sé parte de la revolución financiera digital.
+    <section class="instruments" id="funciones">
+      <div class="shell">
+        <header class="instruments-head" data-aos="fade-up">
+          <p class="eyebrow light">Instrumentos</p>
+          <h2 class="display light">Cuatro piezas. Una orquesta.</h2>
+          <p class="instruments-lead">
+            Todo lo que necesitas para dirigir tus finanzas con tempo propio — claro, visual y listo para usar.
           </p>
-          <a href="https://github.com/FinanCello" target="_blank" class="work-button">
-            <span>Repositorio GitHub</span>
-            <lucide-icon name="external-link" size="18"></lucide-icon>
-          </a>
+        </header>
+
+        <div class="instrument-grid">
+          <article class="instrument-card" data-aos="fade-up">
+            <div class="inst-icon" aria-hidden="true">
+              <lucide-icon name="wallet" size="26"></lucide-icon>
+            </div>
+            <p class="inst-label">01 · Partitura</p>
+            <h3>Movimientos</h3>
+            <p>Registra o importa CSV/Excel. Cada nota entra a tiempo y el historial suena limpio.</p>
+          </article>
+
+          <article class="instrument-card" data-aos="fade-up" data-aos-delay="80">
+            <div class="inst-icon" aria-hidden="true">
+              <lucide-icon name="target" size="26"></lucide-icon>
+            </div>
+            <p class="inst-label">02 · Crescendo</p>
+            <h3>Metas de ahorro</h3>
+            <p>Objetivos con progreso visible. Mira cómo crece el capital, compás a compás.</p>
+          </article>
+
+          <article class="instrument-card" data-aos="fade-up" data-aos-delay="120">
+            <div class="inst-icon" aria-hidden="true">
+              <lucide-icon name="chart-pie" size="26"></lucide-icon>
+            </div>
+            <p class="inst-label">03 · Harmonía</p>
+            <h3>Categorías</h3>
+            <p>Ordena el flujo entre ingresos y egresos. Tu dinero, afinado por secciones.</p>
+          </article>
+
+          <article class="instrument-card" data-aos="fade-up" data-aos-delay="160">
+            <div class="inst-icon" aria-hidden="true">
+              <lucide-icon name="trophy" size="26"></lucide-icon>
+            </div>
+            <p class="inst-label">04 · Encore</p>
+            <h3>Logros</h3>
+            <p>Constancia premiada. Celebra los hábitos que sostienen tu partitura financiera.</p>
+          </article>
         </div>
+
+        <div class="instruments-cta" data-aos="fade-up">
+          <div class="instruments-cta-copy">
+            <h3>¿Listo para subir al escenario?</h3>
+            <p>Abre tu cuenta y ensaya el primer movimiento en minutos.</p>
+          </div>
+          <button type="button" class="btn btn-solid btn-lg" (click)="navigateToRegister()">
+            Afinar mi cuenta
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="proceso">
+      <div class="shell process-grid">
+        <header class="process-head" data-aos="fade-up">
+          <p class="eyebrow">Cómo suena</p>
+          <h2 class="display">Tres compases para empezar</h2>
+        </header>
+        <ol class="timeline">
+          <li data-aos="fade-up">
+            <span class="tl-beat">01</span>
+            <h3>Cuenta</h3>
+            <p>Personal o empresa. Entra al escenario.</p>
+          </li>
+          <li data-aos="fade-up" data-aos-delay="80">
+            <span class="tl-beat">02</span>
+            <h3>Movimientos</h3>
+            <p>Carga manual o por archivo. Suena el historial.</p>
+          </li>
+          <li data-aos="fade-up" data-aos-delay="160">
+            <span class="tl-beat">03</span>
+            <h3>Metas</h3>
+            <p>Define el tempo: ahorro, límites y logros.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="finale" id="contacto">
+      <div class="shell finale-inner" data-aos="fade-up">
+        <img src="/assets/img/financello-logo.png" alt="" class="finale-logo" />
+        <h2 class="display light">Que tu dinero encuentre su ritmo.</h2>
+        <p>Abre FinanCello y dirige tus finanzas con elegancia.</p>
+        <button type="button" class="btn btn-solid btn-lg" (click)="navigateToRegister()">Empezar ahora</button>
+        <a class="finale-mail" href="mailto:contacto@financello.com">contacto&#64;financello.com</a>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="/assets/img/favicon.png" alt="FinanCello" class="footer-logo-img">
-            <span class="footer-logo-text">FinanCello</span>
-          </div>
-          <p class="footer-description">
-            Plataforma integral de gestión financiera para personas y pequeñas empresas.
-          </p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4 class="footer-title">PRODUCTO</h4>
-            <ul class="footer-list">
-              <li><a href="#funciones" class="footer-link">Funciones</a></li>
-              <li><a href="#" class="footer-link">Precios</a></li>
-              <li><a href="#" class="footer-link">Integraciones</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4 class="footer-title">SOPORTE</h4>
-            <ul class="footer-list">
-              <li><a href="#contacto" class="footer-link">Contacto</a></li>
-              <li><a href="#" class="footer-link">Ayuda</a></li>
-              <li><a href="#" class="footer-link">Documentación</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4 class="footer-title">EMPRESA</h4>
-            <ul class="footer-list">
-              <li><a href="#nosotros" class="footer-link">Nosotros</a></li>
-              <li><a href="#" class="footer-link">Carreras</a></li>
-              <li><a href="https://github.com/FinanCello" class="footer-link" target="_blank">GitHub</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4 class="footer-title">CONTACTO</h4>
-            <ul class="footer-list">
-              <li class="footer-contact">
-                <lucide-icon name="mail" size="16"></lucide-icon>
-                <span>contacto&#64;financello.com</span>
-              </li>
-              <li class="footer-contact">
-                <lucide-icon name="phone" size="16"></lucide-icon>
-                <span>+51 999 888 777</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div class="brand">
+        <img src="/assets/img/financello-logo.png" alt="FinanCello" class="brand-logo brand-logo--on-dark" />
       </div>
-      <div class="footer-bottom">
-        <div class="footer-bottom-content">
-          <p class="footer-copyright">&copy; 2025 FinanCello. Todos los derechos reservados.</p>
-          <div class="footer-legal">
-            <a href="#" class="footer-legal-link">Términos de Uso</a>
-            <a href="#" class="footer-legal-link">Política de Privacidad</a>
-          </div>
-        </div>
+      <p class="footer-copy">&copy; 2026 FinanCello — finanzas con carácter.</p>
+      <div class="footer-links">
+        <button type="button" (click)="navigateToLogin()">Ingresar</button>
+        <a href="https://github.com/FinanCello" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </footer>
@@ -357,7 +213,7 @@
     <div class="auth-modal" (click)="$event.stopPropagation()" data-lenis-prevent>
       <div class="auth-modal-header">
         <div class="auth-brand">
-          <img src="/assets/img/financello.png" alt="FinanCello" class="auth-brand-logo" />
+          <img src="/assets/img/financello-logo-ink.png" alt="FinanCello" class="auth-brand-logo" />
         </div>
         <button type="button" class="auth-close" (click)="closeAuthModal()" aria-label="Cerrar">
           <lucide-icon name="x" size="20"></lucide-icon>

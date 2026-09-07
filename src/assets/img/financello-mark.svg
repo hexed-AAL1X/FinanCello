@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="FinanCello mark">
+  <defs>
+    <linearGradient id="g" x1="15%" y1="90%" x2="85%" y2="10%">
+      <stop offset="0%" stop-color="#0b6862"/>
+      <stop offset="50%" stop-color="#0ea49b"/>
+      <stop offset="100%" stop-color="#7dffc8"/>
+    </linearGradient>
+  </defs>
+  <!-- Cello reconocible: cuerpo, mástil, voluta, clavijas, f-holes, puente, endpin, arco -->
+  <g fill="none" stroke="url(#g)" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(64 66) rotate(-28) translate(-64 -66)">
+    <!-- lower bout -->
+    <path d="M44 98c0 14 9 24 20 24s20-10 20-24c0-10-5-17-10-20 5-3 10-9 10-18 0-12-8-20-20-20s-20 8-20 20c0 9 5 15 10 18-5 3-10 10-10 20z"/>
+    <!-- upper bout already in path via waist; refine waist notches -->
+    <path d="M48 78c5 3 11 4 16 4s11-1 16-4" opacity=".45" stroke-width="3"/>
+    <!-- f-holes -->
+    <path d="M50 86c2 6 3 10 2 14M78 86c-2 6-3 10-2 14" stroke-width="3.2"/>
+    <!-- bridge -->
+    <path d="M54 92h20" stroke-width="3.5"/>
+    <!-- neck -->
+    <path d="M64 60V28" stroke-width="6"/>
+    <!-- scroll -->
+    <path d="M64 28c0-8 6-12 12-10" stroke-width="5"/>
+    <path d="M74 16c4-1 7 2 6 6" stroke-width="4"/>
+    <!-- pegs -->
+    <path d="M58 24h-7M58 30h-7M70 22h7M70 28h7" stroke-width="3.5"/>
+    <!-- endpin -->
+    <path d="M64 122v8" stroke-width="4"/>
+    <!-- bow across body (strings) -->
+    <path d="M28 70l72 28" stroke-width="4.5"/>
+    <path d="M28 70c-4 1-6 6-3 9" stroke-width="3.5"/>
+  </g>
+</svg>

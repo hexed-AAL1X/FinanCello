@@ -27,6 +27,7 @@
     "lucide-angular": "^0.561.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.23.0",
+    "three": "^0.185.1",
     "tslib": "^2.3.0",
     "typed.js": "^2.1.0",
     "zone.js": "~0.15.0"
@@ -37,6 +38,7 @@
     "@angular/compiler-cli": "20.0.4",
     "@types/aos": "^3.0.7",
     "@types/jasmine": "~5.1.0",
+    "@types/three": "^0.185.4",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

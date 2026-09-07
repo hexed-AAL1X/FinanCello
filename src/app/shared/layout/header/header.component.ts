@@ -37,7 +37,7 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/']);
   }
 
   toggleSidebar() {
