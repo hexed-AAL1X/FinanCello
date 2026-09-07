@@ -58,8 +58,8 @@ Incluye:
 - Landing page con modal de autenticación.
 - Dashboard y módulos para categorías, movimientos, metas de ahorro y más.
 
-<p align="center">
-  <img src="docs/dashboard-preview.png" alt="Vista del dashboard de FinanCello con datos" width="900" />
+<p align="center" style="margin: 7px;">
+  <img src="docs/dashboard-preview.png" alt="Dashboard real de FinanCello con datos" width="900" style="margin: 7px;" />
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
