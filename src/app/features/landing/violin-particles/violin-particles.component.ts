@@ -25,7 +25,7 @@ import {
   MeshStandardMaterial,
   NormalBlending,
   Object3D,
-  PCFSoftShadowMap,
+  PCFShadowMap,
   PerspectiveCamera,
   Points,
   PMREMGenerator,
@@ -38,8 +38,8 @@ import {
   WebGLRenderer,
 } from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshSurfaceSampler } from 'three/examples/jsm/math/MeshSurfaceSampler.js';
+import { loadCelloScene } from './cello-preload';
 
 type CelloCover = 'dots' | 'teal' | 'glass' | 'wood';
 
@@ -47,7 +47,7 @@ type CelloCover = 'dots' | 'teal' | 'glass' | 'wood';
   selector: 'app-violin-particles',
   standalone: true,
   template: `
-    <div class="wrap" #wrap>
+    <div class="wrap" #wrap [class.is-ready]="!loading">
       <canvas #canvas></canvas>
       @if (loading) {
         <div class="loading" aria-hidden="true"></div>
@@ -72,12 +72,19 @@ type CelloCover = 'dots' | 'teal' | 'glass' | 'wood';
       .wrap {
         position: relative;
       }
+      canvas {
+        opacity: 0;
+        transition: opacity 0.45s ease;
+      }
+      .wrap.is-ready canvas {
+        opacity: 1;
+      }
       .loading {
         position: absolute;
         inset: 42% 44%;
         border-radius: 50%;
         background: radial-gradient(circle, rgba(14, 164, 155, 0.45), transparent 70%);
-        animation: pulse 1.4s ease-in-out infinite;
+        animation: pulse 1.1s ease-in-out infinite;
         pointer-events: none;
       }
       @keyframes pulse {
@@ -173,18 +180,17 @@ export class ViolinParticlesComponent implements AfterViewInit, OnDestroy {
     this.camera = new PerspectiveCamera(35, 1, 0.1, 200);
     this.camera.position.set(0.4, 0.2, 12);
 
-    this.scene.add(new AmbientLight(0x0a1e1c, 0.2));
-    this.scene.add(new HemisphereLight(0x8ee8d4, 0x020806, 0.32));
+    this.scene.add(new AmbientLight(0x0a1e1c, 0.28));
+    this.scene.add(new HemisphereLight(0x8ee8d4, 0x020806, 0.4));
 
-    this.keyLight = new DirectionalLight(0xfff1e0, 2.35);
+    this.keyLight = new DirectionalLight(0xfff1e0, 2.2);
     this.keyLight.position.set(1.8, 7.2, 2.4);
     this.keyLight.castShadow = true;
-    this.keyLight.shadow.mapSize.set(2048, 2048);
+    this.keyLight.shadow.mapSize.set(1024, 1024);
     this.keyLight.shadow.camera.near = 0.2;
     this.keyLight.shadow.camera.far = 25;
     this.keyLight.shadow.bias = -0.0002;
     this.keyLight.shadow.normalBias = 0.012;
-    this.keyLight.shadow.radius = 5.5;
     this.scene.add(this.keyLight);
 
     const fill = new DirectionalLight(0x5ecfc4, 0.42);
@@ -218,22 +224,23 @@ export class ViolinParticlesComponent implements AfterViewInit, OnDestroy {
       powerPreference: 'high-performance',
     });
     this.renderer.setClearColor(0x000000, 0);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
     this.renderer.outputColorSpace = SRGBColorSpace;
     this.renderer.toneMapping = ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.0;
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = PCFSoftShadowMap;
-
-    this.pmrem = new PMREMGenerator(this.renderer);
-    this.scene.environment = this.pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.renderer.shadowMap.type = PCFShadowMap;
 
     window.addEventListener('resize', this.onResize);
     this.resize();
 
-    new GLTFLoader().load(
-      '/models/cello.glb',
-      (gltf) => {
+    this.renderer.setAnimationLoop(() => {
+      if (!this.disposed) this.render();
+    });
+
+    // Carga automática (usa cache/preload si ya arrancó)
+    void loadCelloScene()
+      .then((gltf) => {
         if (this.disposed) return;
         this.cello = gltf.scene;
         this.applyCover(this.cello, this.cover);
@@ -242,19 +249,21 @@ export class ViolinParticlesComponent implements AfterViewInit, OnDestroy {
         this.zone.run(() => {
           this.loading = false;
         });
-      },
-      undefined,
-      (err) => {
+        // Entorno IBL después del primer frame visible
+        queueMicrotask(() => this.attachEnvironment());
+      })
+      .catch((err) => {
         console.error('No se pudo cargar cello.glb', err);
         this.zone.run(() => {
           this.loading = false;
         });
-      },
-    );
+      });
+  }
 
-    this.renderer.setAnimationLoop(() => {
-      if (!this.disposed) this.render();
-    });
+  private attachEnvironment(): void {
+    if (this.disposed || !this.renderer || !this.scene || this.pmrem) return;
+    this.pmrem = new PMREMGenerator(this.renderer);
+    this.scene.environment = this.pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   }
 
   private applyCover(root: Object3D, cover: CelloCover): void {

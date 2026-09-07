@@ -25,6 +25,7 @@ import AOS from 'aos';
 import Typed from 'typed.js';
 
 import { ViolinParticlesComponent } from '../violin-particles/violin-particles.component';
+import { preloadCelloModel } from '../violin-particles/cello-preload';
 
 @Component({
   selector: 'app-landing-page',
@@ -71,6 +72,9 @@ export class LandingPageComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    // Precarga el cello en paralelo al resto del landing
+    void preloadCelloModel().catch(() => undefined);
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
