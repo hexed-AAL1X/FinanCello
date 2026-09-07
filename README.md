@@ -188,6 +188,8 @@ Contribuciones bienvenidas.
 <a id="top-contributors"></a>
 ### Top contributors
 
+<div align="center">
+
 <table>
   <tr>
     <td align="center" width="160">
@@ -227,6 +229,8 @@ Contribuciones bienvenidas.
     </td>
   </tr>
 </table>
+
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
