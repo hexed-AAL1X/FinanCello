@@ -12,7 +12,7 @@
 <br>
 
 <div align="center">
-  <img src="src/assets/img/financello.png" alt="FinanCello" width="120" />
+  <img src="src/assets/img/financello-logo.png" alt="FinanCello" width="320" />
   <h3 align="center">FinanCello Frontend</h3>
   <p align="center">
     Frontend web (Angular) para gestión de finanzas personales y empresariales.
@@ -57,6 +57,10 @@ Incluye:
 
 - Landing page con modal de autenticación.
 - Dashboard y módulos para categorías, movimientos, metas de ahorro y más.
+
+<p align="center">
+  <img src="docs/dashboard-preview.png" alt="Vista del dashboard de FinanCello con datos" width="900" />
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
