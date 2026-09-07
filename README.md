@@ -51,16 +51,17 @@
 
 <a id="about-the-project"></a>***About the project***
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<p align="center" style="margin: 7px;">
+  <img src="docs/dashboard-preview.png" alt="Dashboard real de FinanCello con datos" width="900" style="margin: 7px;" />
+</p>
+
 FinanCello es una aplicación web enfocada en ayudarte a administrar tus finanzas.
 
 Incluye:
 
 - Landing page con modal de autenticación.
 - Dashboard y módulos para categorías, movimientos, metas de ahorro y más.
-
-<p align="center" style="margin: 7px;">
-  <img src="docs/dashboard-preview.png" alt="Dashboard real de FinanCello con datos" width="900" style="margin: 7px;" />
-</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
